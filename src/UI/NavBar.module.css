@@ -1,0 +1,34 @@
+
+.dj-room:hover{
+    cursor: pointer;
+   
+}
+.dj-room{
+    text-decoration: none;
+ margin-left: 20px;
+}
+.navBar{
+    min-height: 5vh;
+}
+.login{
+    position: absolute;
+    right: 0;
+    color: rgba(32, 131, 170, 0.671);
+    font-size: 17px;
+}
+.login:hover{
+    color: rgb(41, 137, 175);
+}
+.login-icon{
+   margin-right: 5px ;
+   transform: scale(1.2);
+   color: whitesmoke;
+}
+@media screen and (max-width: 991px) {
+    .login{
+        position: relative;
+        margin-left: 5px;
+    
+  
+    }
+  }
