@@ -9,16 +9,18 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import Footer from './UI/Footer';
 
 function App() {
   return (
     <Router>
-           <NavBar/>  
+           <NavBar/> 
    <Routes>
         <Route path="/Home" element={ <Home/> } />
         <Route path="/Login" element={ <Login/> } />
     
       </Routes>
+      <Footer/>
    </Router>
   );
 }

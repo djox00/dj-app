@@ -1,46 +1,41 @@
-import React from 'react'
-import { createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth'
+import React, { Fragment } from 'react'
+import { createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { auth } from '../firebase-config'
 import { useState, useRef } from 'react'
+import styled from './Login.module.css'; 
+import LoginForm from '../UI/LoginForm';
+
 
 
 
 
 
 const Login = () => {
-    const [Registeremail, setRegisteremail] = useState(''); 
-    const [Registerpassword, setRegisterpassword] = useState(''); 
-    const emailRef = useRef();
-    const passwordRef = useRef();
+
+
+    let RegisteremailRef = useRef();
+    let RegisterpasswordRef = useRef();
+
+    const LoginemailRef = useRef();
+    const LoginpasswordRef = useRef();
 
   const [User, setUser] = useState({}); 
 
-
+  const [displayLogin, setdisplayLogin] = useState(true); 
+    
   onAuthStateChanged(auth,(currentUser)=>{ setUser(currentUser); })
 
-
-
-    const RegisterHandler = (event) => {
-        const e = emailRef.current.value;
-        const p = passwordRef.current.value;
-  
-        if (event.key === 'Enter' || event.type === 'click') {
-          
-          setRegisteremail(e); 
-          setRegisterpassword(p); 
-           
-          register();   
-          emailRef.current.value = ''; 
-          passwordRef.current.value = ''; 
-        };
-      }
-
-
-
     const register = async () => {
+     
+        let e = RegisteremailRef.current.value;
+        let p = RegisterpasswordRef.current.value;
+  
+
         try {
-            const  user = createUserWithEmailAndPassword(auth,Registeremail,Registerpassword); 
+            const  user = await createUserWithEmailAndPassword(auth,e,p); 
             console.log(user); 
+            RegisteremailRef.current.value = ''; 
+            RegisterpasswordRef.current.value = ''; 
       
         } catch (error) {
             console.log(error); 
@@ -48,9 +43,23 @@ const Login = () => {
        
     
     }
-    
-    const login = async () => {
 
+
+
+    const login = async () => {
+        const e = LoginemailRef.current.value;
+        const p = LoginpasswordRef.current.value;
+
+
+        try {
+            const user = await signInWithEmailAndPassword(auth,e,p); 
+            LoginemailRef.current.value = ''; 
+            LoginpasswordRef.current.value = ''; 
+        } catch (error) {
+            console.log(error); 
+            
+        }
+  
       
     
     }
@@ -62,32 +71,49 @@ const Login = () => {
 
 
 
+   
+
+    const LoginWithGoogle = () =>{ 
+      const provider = new GoogleAuthProvider(); 
+    signInWithPopup(auth,provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      console.log(user); 
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
+
+    }
+    
 
 
 
 
     return (
-        <div className="form">
-     <form>
-       <div className="input-container">
-         <label>Username </label>
-         <input type="email" required ref={emailRef} />
-         
-       </div>
-       <div className="input-container">
-         <label>Password </label>
-         <input type="password" name="pass" required ref={passwordRef} />
-       
-       </div>
-       <div className="button-container">
-         <input type="submit" value="Register" onClick={RegisterHandler} />
-       </div>
-     </form>
+        <React.Fragment> 
+        <div className={styled.App}>   
+            <div className={styled.authentication}>
+           {displayLogin ? <LoginForm fLoginemailRef={LoginemailRef} fLoginpasswordRef={LoginpasswordRef} flogin={login} fLoginWithGoogle={LoginWithGoogle} displayLogin={setdisplayLogin}  /> : ''} 
 
-     <div>Logged in: {User?.email}</div>
-
-     <input type="button" onClick={logout} value="log out" />
+     
+     
+     
    </div>
+   </div>
+
+   </React.Fragment>
     )
 }
 

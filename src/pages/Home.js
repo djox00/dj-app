@@ -21,7 +21,7 @@ const Home = () => {
     </Row>
     
      </div>
-     <Footer />
+ 
     </div>
     </React.Fragment>
   )
