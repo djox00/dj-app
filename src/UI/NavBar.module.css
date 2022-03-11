@@ -13,16 +13,29 @@
 .login{
     position: absolute;
     right: 0;
-    color: rgba(32, 131, 170, 0.671);
     font-size: 17px;
 }
-.login:hover{
-    color: rgb(41, 137, 175);
+
+.login-text{
+    color: rgba(32, 131, 170, 0.671);
+    font-weight: 500;
+}
+.login-text:hover{
+    color: rgba(32, 131, 170, 0.904);
 }
 .login-icon{
    margin-right: 5px ;
    transform: scale(1.2);
    color: whitesmoke;
+}
+
+.logout-text{
+    color: rgba(41, 138, 109, 0.623);
+    font-weight: 500;
+}
+.logout-text:hover{
+    color: rgb(41, 138, 109);
+  
 }
 @media screen and (max-width: 991px) {
     .login{

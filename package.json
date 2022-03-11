@@ -16,6 +16,7 @@
     "react-dom": "^17.0.2",
     "react-gapi": "^1.0.1",
     "react-scripts": "5.0.0",
+    "react-spring": "^9.4.3",
     "react-weblibrary": "^1.0.2",
     "react-youtube": "^7.14.0",
     "styled-components": "^5.3.3",

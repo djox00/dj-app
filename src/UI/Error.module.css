@@ -1,0 +1,10 @@
+.error-container{
+    width: 100%;
+    height: 5vh;
+    top: 0;
+    position: fixed;
+    background-color: rgba(150, 43, 43, 0.664);
+}
+.error-container p {
+    color: white;
+}

@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from './Error.module.css'
 
-const Error = () => {
+const Error = (props) => {
   return (
-    <div>Error</div>
+    <Fragment> 
+   <div className={styled['error-container']}>     
+   <p> {props.val}</p>
+   </div>
+
+    </Fragment>
   )
 }
 

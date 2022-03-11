@@ -2,9 +2,21 @@ import React from 'react';
 import styled from './NavBar.module.css';
 import { Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCompactDisc, faUserAstronaut } from '@fortawesome/free-solid-svg-icons'
+import {faCompactDisc, faUserAstronaut, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { signOut,onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase-config';
+import { useState } from 'react';
 
 const NavBar = (props) => {
+const [User, setUser] = useState(null); 
+  onAuthStateChanged(auth,(currentUser)=>{ setUser(currentUser); })
+
+console.log(User); 
+
+const logout = async () =>{ 
+  await signOut(auth); 
+}
+
     return (
         <React.Fragment>
 
@@ -19,7 +31,7 @@ const NavBar = (props) => {
     
     </Nav>
     
-    <Nav.Link className={styled.login} href="Login"><FontAwesomeIcon className={styled['login-icon']} icon={faUserAstronaut} />Login</Nav.Link>
+    <div className={styled.login}> {User==null ? <Nav.Link className={styled['login-text']} href="Login"><FontAwesomeIcon className={styled['login-icon']} icon={faUserAstronaut} />Login</Nav.Link> : <Nav.Link className={styled['logout-text']} onClick={logout} > <FontAwesomeIcon  icon={faArrowRightFromBracket} /> Log out </Nav.Link>}   </div>
   
   </Navbar.Collapse>
 

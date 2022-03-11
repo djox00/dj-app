@@ -6,6 +6,12 @@
 
 .authentication{
     background-color: rgb(41, 138, 109);
-    padding-bottom: 20vh;
+    
 
 }
+
+@media screen and (max-width: 480px) {
+    .authentication {
+        padding-bottom: 55vh;
+    }
+  }

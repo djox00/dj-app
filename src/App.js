@@ -7,7 +7,8 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Link,
+
 } from 'react-router-dom';
 import Footer from './UI/Footer';
 
@@ -15,6 +16,7 @@ function App() {
   return (
     <Router>
            <NavBar/> 
+ 
    <Routes>
         <Route path="/Home" element={ <Home/> } />
         <Route path="/Login" element={ <Login/> } />
