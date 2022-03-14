@@ -6,6 +6,8 @@ import styled from './Login.module.css';
 import LoginForm from '../UI/LoginForm';
 import RegisterForm from '../UI/RegisterForm';
 import Error from '../UI/Error';
+import { useNavigate } from 'react-router-dom';
+import { updateProfile } from 'firebase/auth';
 
 
 
@@ -15,11 +17,8 @@ import Error from '../UI/Error';
 
 
 const Login = () => {
+ 
 
-// register refs 
-    const RegisteremailRef = useRef();
-    const RegisterpasswordRef = useRef();
-    const RegisterConfirmRef = useRef(); 
 // login refs 
     const LoginemailRef = useRef();
     const LoginpasswordRef = useRef();
@@ -31,40 +30,45 @@ const Login = () => {
 // react to the user that is logged in 
   onAuthStateChanged(auth,(currentUser)=>{ setUser(currentUser); })
 
+  const navigate = useNavigate(); 
+
+// if status is true the errorMessage will be displayed  
 const [ErrorStatus, setErrorStatus] = useState(false); 
 const [errorMessage, seterrorMessage] = useState(''); 
-  // executes when the user hits register 
-    const register = async () => {
-        let e = RegisteremailRef.current.value;
-        let p = RegisterpasswordRef.current.value;
-        let c = RegisterConfirmRef.current.value;
+  // executes when the user hits register  
+    const register = async (name,e,p,c) => {
+    
         if(p===c){  
         try {
             const  user = await createUserWithEmailAndPassword(auth,e,p); 
-            console.log(user); 
-            RegisteremailRef.current.value = ''; 
-            RegisterpasswordRef.current.value = ''; 
-            RegisterConfirmRef.current.value = ''; 
+            updateProfile(auth.currentUser, {displayName : name}); 
+            console.log(auth.currentUser); 
+            setErrorStatus(false);
+            navigate("/Home"); 
       
         } catch (error) {
-            console.log(error); 
-        }} else { console.log('password error');     }
+          setErrorStatus(true);    // displays the error box 
+          seterrorMessage(error);  // sets the message 
+        }} else { 
+          setErrorStatus(true);    // displays the error box 
+          seterrorMessage('Password does not match!');  // sets the message 
+
+
+             }
        
     
     }
  
     
 
-    const login = async () => {
-        const e = LoginemailRef.current.value;
-        const p = LoginpasswordRef.current.value;
-
+    const login = async (e,p) => {
+ 
 
         try {
             const user = await signInWithEmailAndPassword(auth,e,p); 
-            LoginemailRef.current.value = ''; 
-            LoginpasswordRef.current.value = ''; 
             setErrorStatus(false); 
+            navigate("/Home"); 
+         
         } catch (error) {
           setErrorStatus(true);    // displays the error box 
           seterrorMessage(error);  // sets the message 
@@ -93,8 +97,10 @@ const [errorMessage, seterrorMessage] = useState('');
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
+      
       setErrorStatus(false);          // removes error if its active 
       console.log(user); 
+      navigate("/Home"); 
       // ...
     }).catch((error) => {
       // Handle Errors here.
@@ -118,14 +124,15 @@ const [errorMessage, seterrorMessage] = useState('');
 
 
         <React.Fragment> 
-          {ErrorStatus ? <Error></Error> : ''}
-        <div className={styled.App}>   
+ 
+        <div className={styled.App}>
+        {ErrorStatus ? <Error>{errorMessage}</Error> : ''}   
             <div className={styled.authentication}>
            {displayLogin ?
             <LoginForm fLoginemailRef={LoginemailRef} fLoginpasswordRef={LoginpasswordRef} flogin={login} fLoginWithGoogle={LoginWithGoogle} displayLogin={setdisplayLogin}  /> :
-               <RegisterForm fRegisteremailRef={RegisteremailRef} fRegisterpasswordRef={RegisterpasswordRef} fRegisterConfirmRef={RegisterConfirmRef} fregister={register} displayLogin={setdisplayLogin}  />} 
+               <RegisterForm  fregister={register} displayLogin={setdisplayLogin}  />} 
 
-     
+  
 
      
    </div>

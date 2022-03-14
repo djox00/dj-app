@@ -2,20 +2,14 @@ import React, { useState } from 'react';
 import styled from './MusicWindow.module.css'
 import YouTube from 'react-youtube';
 import YTSearch from 'youtube-api-search'; 
-import { auth } from '../firebase-config';
-import { onAuthStateChanged } from 'firebase/auth';
 
-import {useEffect} from 'react'
 const API_KEY = 'AIzaSyAaJqC70Z5FvaOtwtKvHc_RJ5hh86fa6dQ'; 
 
 
 
 
 const MusicWindow = () => {
-  const [User, setUser] = useState({}); 
-  onAuthStateChanged(auth,(currentUser)=>{ 
-    setUser(currentUser); 
-  })
+  
   
    
 
@@ -86,7 +80,6 @@ async function getVideos (input) {
     return (
         <React.Fragment>
           <div className={styled['video-container']}>   
-         <p style={{color : 'white'}}>user {User?.email}</p>
           <YouTube opts={opts}
             videoId={videoID}
             onStateChange={(e) => checkElapsedTime(e)}
