@@ -3,65 +3,42 @@ import styled from './ChatBar.module.css'
 import { useState, useEffect, useReducer, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
-import 'firebase/firestore'; 
 import { auth } from '../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
-import 'firebase/database'; 
-import { getDatabase, set , ref, onValue, Database } from 'firebase/database';
-import { collection, CollectionReference, doc, Firestore, setDoc } from 'firebase/firestore';
-
-
-
-
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import { getFirestore } from '@firebase/firestore';
+import { collection, addDoc, getDocs, orderBy, limit, query } from '@firebase/firestore';
+import { useFirestoreQuery } from '../costumHooks/firebase-hooks';
+import Message from './Message';
 
 const ChatBar = () => {
 
-  /* function writeUserData(name, email, imageUrl) {
-    const db = getDatabase();
-    set(ref(db, 'messages/'), {
-      username: name,
-      email: email,
-      profile_picture : imageUrl
-    });}
-
-  writeUserData('DJole','dsadsa','testest'); 
   
-
-  const db = getDatabase();
-  const starCountRef = ref(db, 'messages/');
-  onValue(starCountRef, (snapshot) => {
-    const data = snapshot.val();
-    console.log(data);
-  });
-
-
-  writeUserData(21,'Ddsaole','dsadsa','testest');  */
-
-
-
-
-  const db = getDatabase();
+ const db = getFirestore(); 
+  const messageRef = collection(db,"messages"); 
+const addmessage = async (message,displayName,uid,photoURL) =>{  
   
-  CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("public_messages");
+  try {
+    const docRef = await addDoc(messageRef, {
+      text: message,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      uid,
+      displayName,
+      photoURL
+    });
+   
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }}
 
 
 
-    const setdata = async () =>{ 
-     await setDoc(doc(messagesRef, "/messages"), {
-        name: "San Francisco", state: "CA", country: "USA",
-        capital: false, population: 860000,
-        regions: ["west_coast", "norcal"] }); 
-    }
-
-    setdata(); 
-  
-
-
-
-
-
-
-
+const q = query(messageRef,orderBy('createdAt'),limit(25)); 
+const messages = useFirestoreQuery(q); 
+console.log(messages);
 
 
   const [User, setUser] = useState(''); 
@@ -72,23 +49,23 @@ const ChatBar = () => {
 
 
 
-const [message, setmessage] = useState(''); 
-  const UserInput = useRef();
 
+  const UserInput = useRef();
   const onKeyPressHandler = (event) => {
+      
+  const {displayName, uid, photoURL} = User; 
       const msg = UserInput.current.value;
 
       if (event.key === 'Enter' || event.type === 'click') {
-        setmessage(msg);
+        addmessage(msg,displayName,uid,photoURL); 
           UserInput.current.value = '';
       };
-
   }
 
-console.log(message); 
 
 
-let msgField = <div  class={styled["message-input"]}>   
+
+let msgField = <div  className={styled["message-input"]}>   
 <input  ref={UserInput} type="text" placeholder="Write a message..." onKeyPress={onKeyPressHandler}  />
 <FontAwesomeIcon className={styled["message-send"]} icon={faLocationArrow} onClick={onKeyPressHandler} />
 </div> 
@@ -100,6 +77,18 @@ let msgField = <div  class={styled["message-input"]}>
         <div className={styled.frame}>   
         <div className={styled["chat-container"]}>   
           <div className={styled["message-window"]}>
+          <ul>
+          {messages
+              ?.sort((first, second) =>
+                first?.createdAt?.seconds <= second?.createdAt?.seconds ? -1 : 1
+              )
+              ?.map(message => (
+                <li key={message.id}>
+                  <Message {...message} />
+                </li>
+              ))}
+          </ul>
+            
           </div>
 
          {User!=null ? msgField : ''}

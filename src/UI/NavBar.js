@@ -24,7 +24,7 @@ const logout = async () =>{
  
   <div className={styled['dj-room']}>   <Navbar.Brand href='Home' ><FontAwesomeIcon icon={faCompactDisc} /> Music Room</Navbar.Brand></div>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{border : "none", boxShadow : "none"}} />
-  <Navbar.Collapse id="responsive-navbar-nav" c>
+  <Navbar.Collapse id="responsive-navbar-nav" c={true}>
     <Nav style={{marginLeft: "20px"}} >
       <Nav.Link href="features">Features</Nav.Link>
       <Nav.Link href="pricing">Pricing</Nav.Link>
