@@ -79,7 +79,7 @@ let msgField = <div  className={styled["message-input"]}>
 
 
 function ChatMessage(props) {
-  const { displayName, text, uid, photoURL, createdAt } = props.message;
+  const { displayName, text, uid, photoURL} = props.message;
   let messageClass = 'received'; 
 
   if(User!=null){   
@@ -87,25 +87,24 @@ function ChatMessage(props) {
   }
 
   return (<>
-   
-   {/*  <div className={`${styled.message} ${styled[messageClass]} `}>
+    {(displayName && messageClass!=='sent')? (
+            <div className={styled.displayName} >{displayName }  </div>
+          ) : null}
+    <div className={`${styled.message} ${styled[messageClass]} `}>
       
       <img src={photoURL || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} />
-      {(displayName && messageClass!=='sent')? (
-            displayName
-          ) : null}
+     
     <p>{text}</p>
-    </div> */}
+    </div>
 
 
-    <div className={`${styled.message} ${styled[messageClass]} `}>
-      {photoURL ? (
+
+ {/*    <div className={`${styled.message} ${styled[messageClass]} `}>
         <img
         src={photoURL || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'}
           alt="Avatar"
-         
         />
-      ) : null}
+      
       <div>
         <div className={styled.displayName}>
           {displayName ? (
@@ -121,7 +120,7 @@ function ChatMessage(props) {
         </div>
         <p>{text}</p>
       </div>
-    </div>
+    </div> */}
 
 
 
@@ -135,18 +134,9 @@ function ChatMessage(props) {
         <div className={styled.frame}>   
         <div className={styled["chat-container"]}>   
           <div className={styled["message-window"]}>
-         {/*  <ul>
-          {messages
-              ?.sort((first, second) =>
-                first?.createdAt?.seconds <= second?.createdAt?.seconds ? -1 : 1
-              )
-              ?.map(message => (
-                <li key={message.id}>
-                  <Message {...message} />
-                </li>
-              ))}
-          </ul> */}
-          {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+         <ul>  
+          {messages && messages.map(msg => <li> <ChatMessage key={msg.id} message={msg} /></li> )}
+          </ul>
             <span ref={autodown}> </span>
           </div>
 

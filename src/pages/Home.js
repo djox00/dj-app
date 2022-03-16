@@ -15,7 +15,7 @@ const Home = () => {
  
      <div className={styled.music}>
    
-   <Row>    
+   <Row className={styled.content}>     
 
     <Col lg={6} > <MusicWindow />  </Col>
     <Col lg={6} ><ChatBar /> </Col>
