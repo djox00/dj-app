@@ -24,7 +24,10 @@ const register = (e) => {
  const email = RegisteremailRef.current.value; 
  const password = RegisterpasswordRef.current.value; 
  const confirmPassword = RegisterConfirmRef.current.value; 
+
  fregister(displayname,email,password,confirmPassword); 
+
+
 
 
 }

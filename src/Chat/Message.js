@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from './Message.module.css'
 
 
 
@@ -13,7 +14,7 @@ const Message = ({
   if (!text) return null;
 
   return (
-    <div className="px-4 py-4 rounded-md hover:bg-gray-50 dark:hover:bg-coolDark-600 overflow-hidden flex items-start">
+    <div className={styled.messageBox}>
       {photoURL ? (
         <img
           src={photoURL}
