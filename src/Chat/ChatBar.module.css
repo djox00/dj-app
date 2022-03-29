@@ -83,6 +83,7 @@ ul, li {
   .message {
     display: flex;
     align-items: center;
+    word-break: break-all;
   }
 
   
@@ -112,8 +113,21 @@ ul, li {
       margin-left: 50px;
       font-size: 1rem;
   }
-  .message-window::-webkit-scrollbar-track{
-      color: #49d6b3;
+  ::-webkit-scrollbar {
+    width: 13px;
+  
   }
+  
+  .message-window::-webkit-scrollbar-track {
+    background: #383838a1;
+    
+  }
+  
+  .message-window::-webkit-scrollbar-thumb {
+    background: #27a542da;
+    border-radius: 20px;
+    
+  }
+  
 
 

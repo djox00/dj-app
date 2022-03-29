@@ -79,8 +79,11 @@ let msgField = <div  className={styled["message-input"]}>
 
 
 function ChatMessage(props) {
-  const { displayName, text, uid, photoURL} = props.message;
+  const { displayName, text, uid, photoURL, createdAt} = props.message;
   let messageClass = 'received'; 
+  let date = new Date(createdAt?.seconds * 1000).toUTCString(); 
+
+
 
   if(User!=null){   
    messageClass = (uid === User.uid) ? 'sent' : 'received';
@@ -88,7 +91,7 @@ function ChatMessage(props) {
 
   return (<>
     {(displayName && messageClass!=='sent')? (
-            <div className={styled.displayName} >{displayName }  </div>
+            <div className={styled.displayName} >{displayName } </div>
           ) : null}
     <div className={`${styled.message} ${styled[messageClass]} `}>
       
@@ -96,32 +99,6 @@ function ChatMessage(props) {
      
     <p>{text}</p>
     </div>
-
-
-
- {/*    <div className={`${styled.message} ${styled[messageClass]} `}>
-        <img
-        src={photoURL || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'}
-          alt="Avatar"
-        />
-      
-      <div>
-        <div className={styled.displayName}>
-          {displayName ? (
-            <p>{displayName}</p>
-          ) : null}
-
-          {createdAt?.seconds ? (
-            <span className={styled.displayText}>
-             
-            </span>
-          ) : null}
-
-        </div>
-        <p>{text}</p>
-      </div>
-    </div> */}
-
 
 
   </>)}
