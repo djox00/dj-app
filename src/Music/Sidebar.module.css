@@ -56,21 +56,29 @@ margin-top: 50px;
 
   }
 
-.search-field input{
-    border-color: transparent;
-    border-style: none;
-    border: none;
+.search-field input:focus{
+    
+    outline: solid 3px rgb(36, 180, 108);
+    border: transparent;
 }
 
 
   .search-icon
   {
-color: white;
-transform: scale(1.5);
+color: rgb(36, 180, 108);
+transform: scale(1.7);
 margin-left: 20px;
 
   }
   .search-icon:hover{
       cursor: pointer;
+  }
+  .search-result{
+      position: relative;
+      width: 80%;
+      left: 10%;
+      background-color: rgb(255, 255, 255);
+      margin-top: 50px;
+      min-height: 100px;
   }
   

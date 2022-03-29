@@ -4,6 +4,7 @@ import YouTube from 'react-youtube';
 import YTSearch from 'youtube-api-search'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCompactDisc } from '@fortawesome/free-solid-svg-icons';
+
 const API_KEY = 'AIzaSyAaJqC70Z5FvaOtwtKvHc_RJ5hh86fa6dQ'; 
 
 
@@ -40,33 +41,10 @@ const checkElapsedTime = (e) => {
 
 
 
-const videoSearch = (term) => {
-  YTSearch({key: 'AIzaSyAaJqC70Z5FvaOtwtKvHc_RJ5hh86fa6dQ', term: term}, (videos) => {
-    console.log(videos)
-    
-  
-
-  })
-}
-
-
-
-async function getVideos (input) { 
-
-  const response = await fetch(`https://youtube.googleapis.com/youtube/v3/search?maxResults=10&order=relevance&q=sasa%20kovacevic&key=${API_KEY}`); 
-  const videos = await response.json(); 
-  console.log(
-    videos
-  );
-
-
-}
-
-videoSearch("sasa kovacevic"); 
   
 
 // get video details to handle when the next video plays along 
-  async function getVideosDetails (input) { 
+/*   async function getVideosDetails (input) { 
 
     const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=BLPd_AYS4FA&part=contentDetails&key=${API_KEY}`); 
     const videosDetails = await response.json(); 
@@ -74,10 +52,10 @@ videoSearch("sasa kovacevic");
       videosDetails
     );
   
-  }
+  } */
   
 
-
+  
 
 
 

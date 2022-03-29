@@ -3,9 +3,14 @@ import styled from './Sidebar.module.css'
 import { animated, useSpring } from 'react-spring'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faSearch } from '@fortawesome/free-solid-svg-icons'
+import YTSearch from 'youtube-api-search'
+import { useRef } from 'react'
+import { useState } from 'react'
+const API_KEY = 'AIzaSyAaJqC70Z5FvaOtwtKvHc_RJ5hh86fa6dQ'; 
 
 const Sidebar = ({toggle,setToggle}) => {
 
+    
 
     const sidebar = useSpring({
         transform: toggle ? "translateX(50%)" : "translateX(-50%)",
@@ -14,8 +19,7 @@ const Sidebar = ({toggle,setToggle}) => {
 console.log(toggle)
 
     const backdrop = useSpring({
-        Display : toggle ? "block" : "none",
-        opacity: toggle ? 1 : 0, 
+        visibility : toggle ? "visible" : "hidden",
         config: {duration: 0}
     });
 
@@ -25,6 +29,46 @@ console.log(toggle)
        }
 
 
+const [videos, setvideos] = useState({}); 
+
+       async function getVideos (input) { 
+
+        const response = await fetch(`https://youtube.googleapis.com/youtube/v3/search?maxResults=10&order=relevance&q=${input}&key=${API_KEY}`); 
+        const videos = await response.json(); 
+       console.log(videos);
+       
+
+
+
+      }
+
+
+
+
+      const videoSearch = (term) => {
+        YTSearch({key: 'AIzaSyAaJqC70Z5FvaOtwtKvHc_RJ5hh86fa6dQ', term: term}, (videos) => {
+          console.log(videos)
+          
+        
+      
+        })
+      };  
+
+
+   
+      const UserInput = useRef();
+      const onKeyPressHandler = (event) => {
+          
+          const search = UserInput.current.value;
+      
+          if (event.key === 'Enter' || event.type === 'click') {
+            getVideos(search); 
+              UserInput.current.value = '';
+           
+          };
+      }
+      
+      
 
    
   return (
@@ -37,12 +81,12 @@ console.log(toggle)
    <div className={styled.close}><FontAwesomeIcon onClick={changeToggle} className={styled['close-button']} icon={faXmark} /></div>
 
 
-<div className={styled['search-field']}>   <input type="text"  /> <FontAwesomeIcon className={styled['search-icon']} icon={faSearch} /></div>
+<div className={styled['search-field']}>   <input type="text" ref={UserInput} onKeyUp={onKeyPressHandler}  /> <FontAwesomeIcon className={styled['search-icon']} icon={faSearch} onClick={onKeyPressHandler} /></div>
 
 
 
 
-
+<div className={styled['search-result']}>d </div>
 
 
 

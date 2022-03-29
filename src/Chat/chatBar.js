@@ -11,7 +11,6 @@ import 'firebase/compat/firestore';
 import { getFirestore } from '@firebase/firestore';
 import { collection, addDoc, getDocs, orderBy, limit, query } from '@firebase/firestore';
 import { useFirestoreQuery } from '../costumHooks/firebase-hooks';
-import Message from './Message';
 import { limitToLast } from 'firebase/firestore';
 
 const ChatBar = () => {
@@ -39,7 +38,6 @@ const addmessage = async (message,displayName,uid,photoURL) =>{
 
 const q = query(messageRef,orderBy('createdAt'),limitToLast(25)); 
 const messages = useFirestoreQuery(q); 
-console.log(messages);
 
 useEffect(() => {
   autodown.current.scrollIntoView({ behavior: 'smooth' });
@@ -111,6 +109,7 @@ function ChatMessage(props) {
         <div className={styled.frame}>   
         <div className={styled["chat-container"]}>   
           <div className={styled["message-window"]}>
+          
          <ul>  
           {messages && messages.map(msg => <li> <ChatMessage key={msg.id} message={msg} /></li> )}
           </ul>

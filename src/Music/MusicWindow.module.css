@@ -17,6 +17,31 @@
     position: relative;
  
 }
+
+@media only screen and (max-width: 638px) {
+    .video {
+        width: 90%;
+        height: 300px;
+    }
+    .video-container{
+        height: 350px;
+
+    }
+  }
+
+  @media only screen and (max-width: 402px) {
+    .video {
+        width: 90%;
+        height: 200px;
+    }
+    .video-container{
+        height: 250px;
+
+    }
+    
+  }
+
+
 .queue{
     max-width: 100%;
     min-height: 200px;
