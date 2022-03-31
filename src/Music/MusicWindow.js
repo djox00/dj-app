@@ -4,20 +4,19 @@ import YouTube from 'react-youtube';
 import YTSearch from 'youtube-api-search'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCompactDisc } from '@fortawesome/free-solid-svg-icons';
-
+import { useContext } from 'react';
+import SideBarToggleContext from '../StateProviders/siderbar-toggle';
 const API_KEY = 'AIzaSyAaJqC70Z5FvaOtwtKvHc_RJ5hh86fa6dQ'; 
 
 
 
 
-const MusicWindow = ({setToggle}) => {
+const MusicWindow = () => {
+
+
+const SBcontext = useContext(SideBarToggleContext); 
   
   
-   const changeToggle = () =>{ 
-
-    setToggle((toggle)=>{ return !toggle}); 
-   }
-
   const opts = {
     playerVars: {
       autoplay: 1,
@@ -41,19 +40,6 @@ const checkElapsedTime = (e) => {
 
 
 
-  
-
-// get video details to handle when the next video plays along 
-/*   async function getVideosDetails (input) { 
-
-    const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=BLPd_AYS4FA&part=contentDetails&key=${API_KEY}`); 
-    const videosDetails = await response.json(); 
-    console.log(
-      videosDetails
-    );
-  
-  } */
-  
 
   
 
@@ -71,7 +57,7 @@ const checkElapsedTime = (e) => {
           />
       </div>
       <div className={styled['queue-container']}>   
-     <p> Queue: </p> <div className={styled['add-track-button']}> <button onClick={changeToggle}>  <FontAwesomeIcon icon={faPlus} /> <FontAwesomeIcon icon={faCompactDisc}/>   </button>  </div>
+     <p> Queue: </p> <div className={styled['add-track-button']}> <button onClick={SBcontext.SBtoggle}>  <FontAwesomeIcon icon={faPlus} /> <FontAwesomeIcon icon={faCompactDisc}/>   </button>  </div>
       <div className={styled.queue}> 
       
 <p> dsadsa</p>
