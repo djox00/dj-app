@@ -7,20 +7,15 @@ import MusicWindow from '../Music/MusicWindow';
 import { Container, Row, Col } from 'react-bootstrap';
 import { auth } from '../firebase-config';
 import Sidebar from '../Music/Sidebar';
-import { useState } from 'react';
 import { SideBarContextProvider } from '../StateProviders/siderbar-toggle';
 const Home = () => {
   console.log(auth.currentUser); 
 
 
-
-
-
-
   return (
     <React.Fragment>  
 <SideBarContextProvider>   
-      <Sidebar   />
+     {auth.currentUser!=null ? <Sidebar   /> : '' } 
     <div className={styled.App}>
  
      <div className={styled.music}>

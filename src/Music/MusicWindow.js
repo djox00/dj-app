@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from './MusicWindow.module.css'
 import YouTube from 'react-youtube';
-import YTSearch from 'youtube-api-search'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCompactDisc } from '@fortawesome/free-solid-svg-icons';
 import { useContext } from 'react';
