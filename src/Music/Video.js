@@ -1,11 +1,13 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useRef } from 'react'
 import styled from './Video.module.css'
 import { useEffect, useState } from 'react';
+import Confirm from '../UI/Confirm';
 const API_KEY = 'AIzaSyAaJqC70Z5FvaOtwtKvHc_RJ5hh86fa6dQ'; 
 
 
-const Video = ({videoID}) => {
+const Video = ({videoID,setclickedVideo,setConfirmVideo}) => {
 
+  const VideoRef = useRef(); 
 
 const [Details, setDetails] = useState([]); 
 
@@ -19,12 +21,8 @@ const [Details, setDetails] = useState([]);
     
       } */
 
-
  
 const [VideoTitle, setVideoTitle] = useState(''); 
-
-
-
 
 
 async function getVideosDetails (input) { 
@@ -35,20 +33,23 @@ async function getVideosDetails (input) {
 
 }
 
-
-useEffect(() => {
- 
   getVideosDetails(videoID); 
 
-}, [])  
+
+const onClickHandler = () =>{
+  setclickedVideo(()=>{return {video_id: videoID, videoTitle:  VideoTitle }}); 
+
+    setConfirmVideo((prev)=>{return {...prev, boxVisible: true}}); 
+  
+}
 
 
-    console.log(videoID); 
+   
   return (
     <Fragment>  
    
-   <div className={styled['image-container']}> 
-   
+   <div className={styled['image-container']} onClick={onClickHandler} ref={VideoRef}>         
+  
     <img  alt={`https://img.youtube.com/vi/${videoID}/sddefault.jpg`} src={`https://img.youtube.com/vi/${videoID}/hqdefault.jpg`} /> 
     <p>{VideoTitle}</p>
    </div>

@@ -63,14 +63,17 @@ display: inline-block;
     display: inline-block;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
 .playbox{
     height: 50px;
     width: 50px;
     background-color: rgb(177, 178, 179);
     position: relative;
   
+  
     
-   
-    
-    
+}
+.queue-container{
+    font-family: 'Share Tech Mono', monospace;
 }

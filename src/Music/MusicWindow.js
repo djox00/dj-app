@@ -6,10 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCompactDisc } from '@fortawesome/free-solid-svg-icons';
 import { useContext } from 'react';
 import SideBarToggleContext from '../StateProviders/siderbar-toggle';
+import { useFirestoreQuery } from '../costumHooks/firebase-hooks';
+import { limitToLast } from 'firebase/firestore';
+import { query, collection, getFirestore, orderBy } from 'firebase/firestore';
 const API_KEY = 'AIzaSyAaJqC70Z5FvaOtwtKvHc_RJ5hh86fa6dQ'; 
-
-
-
 
 const MusicWindow = () => {
 
@@ -39,6 +39,12 @@ const checkElapsedTime = (e) => {
 };
 
 
+const db = getFirestore(); 
+  const queueRef = collection(db,"queue"); 
+const q = query(queueRef,orderBy('createdAt'),limitToLast(25)); 
+const queue = useFirestoreQuery(q); 
+
+
 
 
   
@@ -60,17 +66,7 @@ const checkElapsedTime = (e) => {
      <p> Queue: </p> <div className={styled['add-track-button']}> <button onClick={SBcontext.SBtoggle}>  <FontAwesomeIcon icon={faPlus} /> <FontAwesomeIcon icon={faCompactDisc}/>   </button>  </div>
       <div className={styled.queue}> 
       
-<p> dsadsa</p>
-<p> dsadsa</p>
-<p> dsadsa</p>
-<p> dsadsa</p>
-<p> dsadsa</p>
-<p> dsadsa</p>
-<p> dsadsa</p>
-<p> dsadsa</p>
-<p> dsadsa</p>
-<p> dsadsa</p>
-<p> dsadsa</p>
+{queue && queue.map((data)=>{return (<p> {data.videotitle}  </p>)}) }
       
       </div>
       </div>

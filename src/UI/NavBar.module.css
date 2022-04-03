@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
 .dj-room:hover{
     cursor: pointer;
    
@@ -9,6 +11,7 @@
 }
 .navBar{
     min-height: 5vh;
+    font-family: 'Share Tech Mono', monospace;
 }
 .login{
     position: absolute;

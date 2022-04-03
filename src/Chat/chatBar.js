@@ -6,7 +6,6 @@ import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 import { auth } from '../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
 import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { getFirestore } from '@firebase/firestore';
 import { collection, addDoc, getDocs, orderBy, limit, query } from '@firebase/firestore';
@@ -59,9 +58,15 @@ useEffect(() => {
       
   const {displayName, uid, photoURL} = User; 
       const msg = UserInput.current.value;
-
+    
+     console.log(msg);
       if (event.key === 'Enter' || event.type === 'click') {
-        addmessage(msg,displayName,uid,photoURL); 
+        msg.replace(/ /g, '');
+        if(msg === "") {  
+       
+        }else{
+          addmessage(msg,displayName,uid,photoURL); 
+        }
           UserInput.current.value = '';
        
       };
@@ -79,7 +84,7 @@ let msgField = <div  className={styled["message-input"]}>
 function ChatMessage(props) {
   const { displayName, text, uid, photoURL, createdAt} = props.message;
   let messageClass = 'received'; 
-  let date = new Date(createdAt?.seconds * 1000).toUTCString(); 
+  let date = new Date(createdAt?.seconds * 1000).toUTCString(); // need to implement
 
 
 

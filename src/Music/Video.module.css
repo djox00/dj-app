@@ -1,3 +1,4 @@
+
 .image-container{
     width: 70%;
     left: 15%;
@@ -7,6 +8,9 @@
     position: relative;
     margin-bottom: 20px;
     
+}
+.image-container:hover{
+    cursor: pointer;
 }
 .image-container img{
     width: 90%;
