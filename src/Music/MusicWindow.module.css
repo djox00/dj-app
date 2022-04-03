@@ -54,6 +54,11 @@
     overflow-y: scroll;
   
 }
+.queue > p {
+   color: rgba(255, 255, 255, 0.808); 
+}
+
+
 .queue-container > p {margin-top: 50px;
 color: white;
 display: inline-block;

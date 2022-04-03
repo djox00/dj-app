@@ -8,14 +8,19 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { auth } from '../firebase-config';
 import Sidebar from '../Music/Sidebar';
 import { SideBarContextProvider } from '../StateProviders/siderbar-toggle';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useState } from 'react';
 const Home = () => {
-  console.log(auth.currentUser); 
-
+  
+  const [User, setUser] = useState(''); 
+  onAuthStateChanged(auth,(currentUser)=>{ 
+    setUser(currentUser); 
+  })
 
   return (
     <React.Fragment>  
 <SideBarContextProvider>   
-     {auth.currentUser!=null ? <Sidebar   /> : '' } 
+     {User!=null ? <Sidebar   /> : '' } 
     <div className={styled.App}>
  
      <div className={styled.music}>
