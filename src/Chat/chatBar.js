@@ -2,7 +2,7 @@ import React from 'react';
 import styled from './ChatBar.module.css'
 import { useState, useEffect, useReducer, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
+import { faLocationArrow,faRocket } from '@fortawesome/free-solid-svg-icons';
 import { auth } from '../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
 import firebase from 'firebase/compat/app';
@@ -77,7 +77,7 @@ useEffect(() => {
 
 let msgField = <div  className={styled["message-input"]}>   
 <input  ref={UserInput} type="text" placeholder="Write a message..." onKeyPress={onKeyPressHandler}  />
-<FontAwesomeIcon className={styled["message-send"]} icon={faLocationArrow} onClick={onKeyPressHandler} />
+<FontAwesomeIcon className={styled["message-send"]} icon={faRocket} onClick={onKeyPressHandler} />
 </div> 
 
 

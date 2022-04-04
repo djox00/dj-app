@@ -19,6 +19,11 @@ const SBcontext = useContext(SideBarToggleContext);
   const opts = {
     playerVars: {
       autoplay: 1,
+      controls: 0, 
+      autohide: 1,
+      showinfo : 0, 
+      wmode: 'opaque',
+      rel: 0,
     },
   };
 
@@ -54,6 +59,10 @@ const removeFromqueue = () =>{
 
 }
   
+const playVideo = (e) =>{
+e.target.playVideo();
+
+}
 
 
 
@@ -61,19 +70,23 @@ const removeFromqueue = () =>{
     return (
 
         <React.Fragment>
-          <div className={styled['video-container']}>   
+        
+          <div className={styled['video-container']}>  
+     
           <YouTube opts={opts}
             videoId={queue[0]?.videoid}
             onStateChange={(e) => checkElapsedTime(e)}
             className={styled.video}
             onEnd={removeFromqueue} 
+            onReady={playVideo} 
           />
+              <p><span style={{color: "rgb(36, 180, 108)"}}> Now playing:  </span>  <img src={queue[0]?.photoURL || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} /> {queue[0]?.videotitle} </p>
       </div>
       <div className={styled['queue-container']}>   
      <p> Queue: </p> <div className={styled['add-track-button']}> <button onClick={SBcontext.SBtoggle}>  <FontAwesomeIcon icon={faPlus} /> <FontAwesomeIcon icon={faCompactDisc}/>   </button>  </div>
       <div className={styled.queue}> 
       
-{queue && queue.map((data)=>{return (<p>   <img src={data.photoURL || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} /> {data.videotitle}  </p>)}) }
+{queue && queue.slice(1).map((data)=>{return (<p>   <img src={data.photoURL || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} /> {data.videotitle}  </p>)}) }
       
       </div>
       </div>

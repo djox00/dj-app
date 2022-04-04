@@ -55,7 +55,7 @@ position: relative;
    
 }
 .message-send{
-    color: rgb(36, 133, 73);
+    color: rgba(128, 30, 219, 0.664);
    transform: scale(1.9)   rotate(15deg);
    margin-left: 10px;   
 }

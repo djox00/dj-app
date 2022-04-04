@@ -6,7 +6,12 @@
   
   }
   .App {
-    background-color: rgb(41, 41, 41);
+    /*https://www.ps4wallpapers.com/wp-content/uploads/2017/03/PS4Wallpapers.com_pinkpurple-space.jpg*/
+    background: url("https://www.ps4wallpapers.com/wp-content/uploads/2017/03/PS4Wallpapers.com_pinkpurple-space.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
    }   
   .content{
     min-height: 90vh;
