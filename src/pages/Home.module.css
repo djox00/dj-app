@@ -7,7 +7,7 @@
   }
   .App {
     /*https://www.ps4wallpapers.com/wp-content/uploads/2017/03/PS4Wallpapers.com_pinkpurple-space.jpg*/
-    background: url("https://www.ps4wallpapers.com/wp-content/uploads/2017/03/PS4Wallpapers.com_pinkpurple-space.jpg") no-repeat center center fixed; 
+    background: url("https://cdn.gamedevmarket.net/wp-content/uploads/20200418003230/5be96f259d13c8fddd4ce65a5bcc7b9e-1400x788.png") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -17,3 +17,5 @@
     min-height: 90vh;
    
   }
+
+ 

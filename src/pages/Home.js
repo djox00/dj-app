@@ -10,6 +10,7 @@ import Sidebar from '../Music/Sidebar';
 import { SideBarContextProvider } from '../StateProviders/siderbar-toggle';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useState } from 'react';
+import Stars from '../Small-UI-components/Stars';
 const Home = () => {
   
   const [User, setUser] = useState(''); 
@@ -20,9 +21,11 @@ const Home = () => {
   return (
     <React.Fragment>  
 <SideBarContextProvider>   
+
      {User!=null ? <Sidebar   /> : '' } 
     <div className={styled.App}>
- 
+   
+     <Stars />
      <div className={styled.music}>
    
    <Row className={styled.content}>     

@@ -57,7 +57,7 @@
     min-height: 200px;
     max-height: 220px;
      margin: 0;
-    background-color: rgb(68, 94, 94);
+    background-color: rgba(68, 163, 163, 0.295);
     border-radius: 10px;
     text-align: center;
     position: relative;
@@ -65,7 +65,7 @@
   
 }
 .queue > p {
-   color: white; 
+   color: rgb(255, 255, 255); 
 }
 
 
