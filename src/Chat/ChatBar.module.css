@@ -44,7 +44,7 @@ position: relative;
     border-radius: 5px;
     padding: 5px;
     width: 80%;
-    background-color: rgb(68, 97, 89);
+    background-color: rgba(187, 187, 187, 0.658);
     color: white;
     border: none;
     
@@ -57,7 +57,7 @@ position: relative;
    
 }
 .message-send{
-    color: rgba(128, 30, 219, 0.664);
+    color: rgba(43, 169, 201, 0.664);
    transform: scale(1.9)   rotate(15deg);
    margin-left: 10px;   
 }
@@ -97,11 +97,11 @@ ul, li {
   
   .sent p {
     color: white;
-    background: #54cc0e;
+    background: rgba(43, 169, 201, 0.664);
     align-self: flex-end;
   }
   .received p {
-    background: #49d6b3;
+    background: rgba(51, 209, 248, 0.864);
     color: black;
   }
   
@@ -128,7 +128,7 @@ ul, li {
   }
   
   .message-window::-webkit-scrollbar-thumb {
-    background: #27a542da;
+    background: rgba(43, 169, 201, 0.664);
     border-radius: 20px;
     
   }

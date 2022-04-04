@@ -1,0 +1,37 @@
+
+
+
+
+input[type='range'] {
+    overflow: hidden;
+    width: 170px;
+    margin-top: 20px;
+    -webkit-appearance: none;
+    background-color: #16485a;
+  }
+  
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 12px;
+    -webkit-appearance: none;
+    color: #9413bb;
+    margin-top: 0px;
+  }
+  
+  input[type='range']::-webkit-slider-thumb {
+    width: 12px;
+    -webkit-appearance: none;
+    height: 12px;
+    background: #ffffff;
+    box-shadow: -80px 0 0 80px #a114bd;
+    border-radius: 50%;
+  }
+
+.volume-icon{
+    color: white;
+    transform: scale(1.2);
+    margin-right: 10px;
+
+}
+.volume-icon:hover{
+    cursor: pointer;
+}

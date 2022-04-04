@@ -8,6 +8,8 @@ import SideBarToggleContext from '../StateProviders/siderbar-toggle';
 import { useFirestoreQuery } from '../costumHooks/firebase-hooks';
 import { deleteDoc, doc, limitToLast } from 'firebase/firestore';
 import { query, collection, getFirestore, orderBy } from 'firebase/firestore';
+import VolumeSlider from '../Small-UI-components/VolumeSlider';
+import { useRef } from 'react';
 const API_KEY = 'AIzaSyAaJqC70Z5FvaOtwtKvHc_RJ5hh86fa6dQ'; 
 
 const MusicWindow = () => {
@@ -19,7 +21,7 @@ const SBcontext = useContext(SideBarToggleContext);
   const opts = {
     playerVars: {
       autoplay: 1,
-      controls: 0, 
+      controls: 0,
       autohide: 1,
       showinfo : 0, 
       wmode: 'opaque',
@@ -60,9 +62,15 @@ const removeFromqueue = () =>{
 }
   
 const playVideo = (e) =>{
+e.target.setVolume(MusicVolume);
 e.target.playVideo();
 
+
 }
+
+const [MusicVolume, setMusicVolume] = useState(1); 
+
+const video = useRef(); 
 
 
 
@@ -72,15 +80,20 @@ e.target.playVideo();
         <React.Fragment>
         
           <div className={styled['video-container']}>  
-     
+         
           <YouTube opts={opts}
             videoId={queue[0]?.videoid}
-            onStateChange={(e) => checkElapsedTime(e)}
+            onStateChange={playVideo}
             className={styled.video}
             onEnd={removeFromqueue} 
-            onReady={playVideo} 
+         
+           
+          
+            
           />
-              <p><span style={{color: "rgb(36, 180, 108)"}}> Now playing:  </span>  <img src={queue[0]?.photoURL || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} /> {queue[0]?.videotitle} </p>
+          <div className={styled.volume}> <VolumeSlider setMusicVolume={setMusicVolume}  />   </div>
+          <p><span style={{color: "rgb(36, 180, 108)"}}> Now playing:  </span>  <img src={queue[0]?.photoURL || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} /> {queue[0]?.videotitle} </p>
+              
       </div>
       <div className={styled['queue-container']}>   
      <p> Queue: </p> <div className={styled['add-track-button']}> <button onClick={SBcontext.SBtoggle}>  <FontAwesomeIcon icon={faPlus} /> <FontAwesomeIcon icon={faCompactDisc}/>   </button>  </div>
