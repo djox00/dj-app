@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signInWithRedirect } from 'firebase/auth'
+import { createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signInWithRedirect, setPersistence, browserLocalPersistence } from 'firebase/auth'
 import { auth } from '../firebase-config'
 import { useState, useRef } from 'react'
 import styled from './Login.module.css';
@@ -8,6 +8,8 @@ import RegisterForm from '../UI/RegisterForm';
 import Error from '../UI/Error';
 import { useNavigate } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
+import firebase from 'firebase/compat/app';
+
 
 
 
@@ -40,6 +42,7 @@ const Login = () => {
 
     if (p === c) {
       try {
+        await setPersistence(auth,firebase.auth.Auth.Persistence.SESSION);
         const user = await createUserWithEmailAndPassword(auth, e, p);
         updateProfile(auth.currentUser, { displayName: name });
         console.log(auth.currentUser);
