@@ -64,6 +64,7 @@ const removeFromqueue = () =>{
 const playVideo = (e) =>{
 e.target.setVolume(MusicVolume);
 e.target.playVideo();
+console.log(e.target)
 
 
 }
@@ -92,14 +93,14 @@ const video = useRef();
             
           />
           <div className={styled.volume}> <VolumeSlider setMusicVolume={setMusicVolume}  />   </div>
-          <p><span style={{color: "rgb(36, 180, 108)"}}> Now playing:  </span>  <img src={queue[0]?.photoURL || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} /> {queue[0]?.videotitle} </p>
+          <p><span style={{color: "rgb(36, 180, 108)"}}> Now playing:  </span>  <img src={queue[0]?.photoURL || `https://avatars.dicebear.com/api/initials/${queue[0]?.displayName}.svg` || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png' } /> {queue[0]?.videotitle} </p>
               
       </div>
       <div className={styled['queue-container']}>   
      <p> Queue: </p> <div className={styled['add-track-button']}> <button onClick={SBcontext.SBtoggle}>  <FontAwesomeIcon icon={faPlus} /> <FontAwesomeIcon icon={faCompactDisc}/>   </button>  </div>
       <div className={styled.queue}> 
       
-{queue && queue.slice(1).map((data)=>{return (<p>   <img src={data.photoURL || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} /> {data.videotitle}  </p>)}) }
+{queue && queue.slice(1).map((data)=>{return (<p key={data.videoid}>   <img src={data.photoURL || `https://avatars.dicebear.com/api/initials/${data?.displayName}.svg`} /> {data.videotitle}  </p>)}) }
       
       </div>
       </div>

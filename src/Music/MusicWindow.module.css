@@ -17,6 +17,15 @@
     font-family: 'Share Tech Mono', monospace;
     margin-left: 100px;
 }
+.video-container  img{
+   
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin: 2px 5px;
+    
+      
+}
 
 .video{
    top: 10px;
@@ -34,9 +43,23 @@
         height: 300px;
     }
     .video-container{
-        height: 350px;
+        min-height: 350px;
 
     }
+    .video-container p{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+  }
+  .queue img{
+    
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin: 2px 5px;
+    
+     
   }
 
   @media only screen and (max-width: 402px) {
@@ -48,6 +71,17 @@
         height: 250px;
 
     }
+    .video-container p{
+       font-size: 12px;
+    }
+    .queue img{
+        transform: scale(0.8);
+    }
+    .queue > p {
+        font-size: 12px;
+     }
+
+   
     
   }
 

@@ -55,7 +55,7 @@ const Sidebar = () => {
 
 
 
-  let videoList = videos.map((video) => { return <Video setConfirmVideo={setConfirmVideo}  setclickedVideo={setclickedVideo} videoID={video.id.videoId} /> });
+  let videoList = videos.map((video) => { return <Video key={video.etag} setConfirmVideo={setConfirmVideo}  setclickedVideo={setclickedVideo} videoID={video.id.videoId} /> });
 
 
 

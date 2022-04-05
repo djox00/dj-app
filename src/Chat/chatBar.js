@@ -116,7 +116,7 @@ function ChatMessage(props) {
           <div className={styled["message-window"]}>
           
          <ul>  
-          {messages && messages.map(msg => <li> <ChatMessage key={msg.id} message={msg} /></li> )}
+          {messages && messages.map(msg => <li key={msg.id}> <ChatMessage  message={msg} /></li> )}
           </ul>
             <span ref={autodown}> </span>
           </div>

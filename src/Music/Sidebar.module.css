@@ -3,7 +3,7 @@
     position: fixed;
     z-index: 90;
     left: -50%;
-    background-color: #111;
+    background-color: rgba(17, 17, 17, 0.705);
     overflow-x: hidden;
     transition: 0.5s;
     padding-right: 10px;

@@ -19,6 +19,30 @@ position: relative;
     text-align: left;
     padding-bottom: 10px;
 }
+
+
+
+@media screen and (max-width: 991px) {
+  .frame {
+    display: flex;
+  justify-content: center;
+
+    height: 80vh;
+  }
+  .chat-container{
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+    
+    
+  }
+}
+
+
+
+
+
+
 .message-window{
     width: 95%;
     height: 90%;
@@ -78,11 +102,13 @@ ul, li {
     line-height: 24px;
     padding: 10px 20px;
     border-radius: 25px;
-    font-size: 1rem;
+    font-size: 15px;
     position: relative;
     color: white;
     text-align: center;
   }
+
+ 
   
   .message {
     display: flex;
@@ -105,7 +131,7 @@ ul, li {
     color: black;
   }
   
-  img {
+  .message > img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -115,8 +141,39 @@ ul, li {
   .displayName{
       color: rgb(110, 110, 110);
       margin-left: 50px;
-      font-size: 1rem;
+      font-size: 15px;
   }
+
+
+  @media only screen and (max-width: 452px) {
+ 
+    .message p {
+      font-size: 14px;
+    }
+    .displayName{
+      font-size: 14px;
+    }
+    .message > img{
+
+      width: 35px;
+      height: 35px;
+    }
+  
+  }
+
+  @media only screen and (max-width: 360px) {
+    .message p {
+      font-size: 13px;
+    }
+    .displayName{
+      font-size: 13px;
+    }
+  }
+
+
+
+
+
   ::-webkit-scrollbar {
     width: 13px;
   

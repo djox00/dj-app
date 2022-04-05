@@ -26,8 +26,9 @@ const logout = async () =>{
   <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{border : "none", boxShadow : "none"}} />
   <Navbar.Collapse id="responsive-navbar-nav" c={true}>
     <Nav style={{marginLeft: "20px"}} >
-      <Nav.Link href="features">Rules</Nav.Link>
-      <Nav.Link href="pricing">Info</Nav.Link>
+      <Nav.Link href="rules">Rules</Nav.Link>
+      <Nav.Link href="info">Info</Nav.Link>
+      <Nav.Link href="myprofile">My Profile</Nav.Link>
     
     </Nav>
     
