@@ -26,6 +26,7 @@ const Login = () => {
   const LoginpasswordRef = useRef();
   // Current user logged in 
   const [User, setUser] = useState({});
+
   // display the user form by default 
   const [displayLogin, setdisplayLogin] = useState(true);
 
@@ -42,7 +43,7 @@ const Login = () => {
 
     if (p === c) {
       try {
-        await setPersistence(auth,firebase.auth.Auth.Persistence.SESSION);
+        await setPersistence(auth,browserLocalPersistence);
         const user = await createUserWithEmailAndPassword(auth, e, p);
         updateProfile(auth.currentUser, { displayName: name });
         console.log(auth.currentUser);
