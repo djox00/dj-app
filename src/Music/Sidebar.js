@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from './Sidebar.module.css'
+import styled from './Sidebar.module.scss'
 import { animated, useSpring } from 'react-spring'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faSearch } from '@fortawesome/free-solid-svg-icons'

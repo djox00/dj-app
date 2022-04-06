@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from './MusicWindow.module.css'
+import styled from './MusicWindow.module.scss'
 import YouTube from 'react-youtube';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCompactDisc } from '@fortawesome/free-solid-svg-icons';

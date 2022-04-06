@@ -56,11 +56,12 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
-  .form hr{
+    hr{
       width: 70%;
       margin-left: 15%;
   }
+  }
+
   .pass {
     width: 76%;
     color: rgb(38, 50, 56);
@@ -86,11 +87,12 @@
 .center-wrap{
     width: 100%;
     text-align: center;
+    p {
+      margin-top: 30px;
+      font-family: "Ubuntu", sans-serif;
+  }
 }
-.center-wrap p {
-    margin-top: 30px;
-    font-family: "Ubuntu", sans-serif;
-}
+
 .sign-in {
     margin-top: 5px;
     cursor: pointer;
@@ -112,19 +114,7 @@
     -ms-user-select: none;
     user-select: none;
     transition: 0.3s;
-  }
-  .sign-in:hover {
-    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, 0.644);
-  }
-  .back-arrow-container{
-      width: 100%;
-      left: 40px;
-      top: 30px;
-      position: relative;
-
-  }
-  .back-icon{ transform: scale(1.3);}
-  .back-icon:hover{
-      cursor: pointer;
-
+    &:hover {
+      box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, 0.644);
+    }
   }

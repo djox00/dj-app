@@ -1,13 +1,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-.dj-room:hover{
-    cursor: pointer;
-   
-}
+
 .dj-room{
     text-decoration: none;
  margin-left: 20px;
+ &:hover{
+    cursor: pointer;
+   
+}
 }
 .navBar{
     min-height: 5vh;
@@ -23,10 +24,11 @@
 .login-text{
     color: rgba(32, 131, 170, 0.671);
     font-weight: 500;
+    &:hover{
+        color: rgba(32, 131, 170, 0.904);
+    }
 }
-.login-text:hover{
-    color: rgba(32, 131, 170, 0.904);
-}
+
 .login-icon{
    margin-right: 5px ;
    transform: scale(1.2);
@@ -36,11 +38,12 @@
 .logout-text{
     color: rgba(41, 138, 109, 0.623);
     font-weight: 500;
+    &:hover{
+        color: rgb(41, 138, 109);
+      
+    }
 }
-.logout-text:hover{
-    color: rgb(41, 138, 109);
-  
-}
+
 @media screen and (max-width: 991px) {
     .login{
         position: relative;

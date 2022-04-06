@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signInWithRedirect, setPersistence, browserLocalPersistence } from 'firebase/auth'
 import { auth } from '../firebase-config'
 import { useState, useRef } from 'react'
-import styled from './Login.module.css';
+import styled from './Login.module.scss';
 import LoginForm from '../UI/LoginForm';
 import RegisterForm from '../UI/RegisterForm';
 import Error from '../UI/Error';

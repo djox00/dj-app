@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVolumeLow, faVolumeHigh,faVolumeXmark } from '@fortawesome/free-solid-svg-icons';
-import styled from './VolumeSlider.module.css'
+import styled from './VolumeSlider.module.scss'
 const VolumeSlider = ({setMusicVolume}) => {
     const [volume, setVolume] = useState(1);
     const [muted, setMuted] = useState(false);

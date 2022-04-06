@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import styled from './Stars.module.css'
+import styled from './Stars.module.scss'
 const Stars = () => {
   return (
     <Fragment> 
