@@ -1,5 +1,5 @@
 import React, { Fragment, useRef } from 'react'
-import styled from './Video.module.css'
+import styled from './Video.module.scss'
 import { useEffect, useState } from 'react';
 import Confirm from '../UI/Confirm';
 const API_KEY = 'AIzaSyAaJqC70Z5FvaOtwtKvHc_RJ5hh86fa6dQ'; 

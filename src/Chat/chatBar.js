@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from './ChatBar.module.css'
+import styled from './ChatBar.module.scss'
 import { useState, useEffect, useReducer, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationArrow,faRocket } from '@fortawesome/free-solid-svg-icons';

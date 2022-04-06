@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import styled from './RegisterForm.module.css';
+import styled from './RegisterForm.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { animated, useSpring } from 'react-spring';

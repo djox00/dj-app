@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from './Home.module.css';
+import styled from './Home.module.scss';
 import Footer from '../UI/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ChatBar from '../Chat/chatBar';

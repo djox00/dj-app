@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from './Footer.module.css'
+import styled from './Footer.module.scss'
 const Footer = () => {
     return (
         <React.Fragment>

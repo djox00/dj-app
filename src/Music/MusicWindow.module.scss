@@ -7,36 +7,23 @@
   overflow: hidden;
     position: relative;
 
-    
-  
-}
-.video-container p {
-   margin-top: 5px;
-    color: white;
-    text-align: left;
-    font-family: 'Share Tech Mono', monospace;
-    margin-left: 100px;
-}
-.video-container  img{
-   
+    p {
+        margin-top: 5px;
+         color: white;
+         text-align: left;
+         font-family: 'Share Tech Mono', monospace;
+         margin-left: 100px;
+     }
+     img{
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        margin: 2px 5px;
-    
-      
+        margin: 2px 5px;   
 }
 
-.video{
-   top: 10px;
-    width: 80%;
-    height: 400px;
-    border-radius: 20px;
-    position: relative;
-   
- 
-}
 
+  
+}
 @media only screen and (max-width: 638px) {
     .video {
         width: 90%;
@@ -52,6 +39,20 @@
         text-align: center;
     }
   }
+
+
+
+.video{
+   top: 10px;
+    width: 80%;
+    height: 400px;
+    border-radius: 20px;
+    position: relative;
+   
+ 
+}
+
+
   .queue img{
     
         width: 40px;
@@ -96,11 +97,13 @@
     text-align: center;
     position: relative;
     overflow-y: scroll;
+
+    p {
+        color: rgb(255, 255, 255); 
+     }
   
 }
-.queue > p {
-   color: rgb(255, 255, 255); 
-}
+
 
 
 .queue-container > p {margin-top: 50px;
@@ -119,8 +122,6 @@ display: inline-block;
     width: 50px;
     background-color: rgb(177, 178, 179);
     position: relative;
-  
-  
     
 }
 .queue-container{

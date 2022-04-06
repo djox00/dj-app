@@ -1,6 +1,6 @@
 import React from 'react'
 import GoogleButton from '../Small-UI-components/GoogleButton'
-import styled from './LoginForm.module.css'
+import styled from './LoginForm.module.scss'
 import { useRef } from 'react'
 const LoginForm = ({flogin,fLoginWithGoogle,displayLogin}) => {
 

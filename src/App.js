@@ -3,6 +3,7 @@ import React, { createContext, Fragment } from 'react';
 import Home from './pages/Home';
 import NavBar from './UI/NavBar';
 import Login from './pages/Login';
+import MyProfile from './pages/MyProfile';
 import { useState } from 'react';
 import {
   BrowserRouter as Router,
@@ -23,6 +24,7 @@ function App() {
    <Routes>
         <Route path="/Home" element={ <Home/> } />
         <Route path="/Login" element={ <Login/> } />
+        <Route path="/MyProfile" element={ <MyProfile />} />
       </Routes>
       <Footer/>
    </Router>

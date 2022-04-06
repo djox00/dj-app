@@ -19,6 +19,7 @@
     "react-spring": "^9.4.3",
     "react-weblibrary": "^1.0.2",
     "react-youtube": "^7.14.0",
+    "sass": "^1.49.11",
     "styled-components": "^5.3.3",
     "web-vitals": "^2.1.4",
     "youtube-api-search": "^0.0.5"

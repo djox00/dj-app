@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from './NavBar.module.css';
+import styled from './NavBar.module.scss';
 import { Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faCompactDisc, faUserAstronaut, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
@@ -26,9 +26,9 @@ const logout = async () =>{
   <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{border : "none", boxShadow : "none"}} />
   <Navbar.Collapse id="responsive-navbar-nav" c={true}>
     <Nav style={{marginLeft: "20px"}} >
-      <Nav.Link href="rules">Rules</Nav.Link>
-      <Nav.Link href="info">Info</Nav.Link>
-      <Nav.Link href="myprofile">My Profile</Nav.Link>
+      <Nav.Link href="Rules">Rules</Nav.Link>
+      <Nav.Link href="Info">Info</Nav.Link>
+      <Nav.Link href="MyProfile">My Profile</Nav.Link>
     
     </Nav>
     
