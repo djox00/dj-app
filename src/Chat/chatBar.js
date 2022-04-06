@@ -57,18 +57,12 @@ useEffect(() => {
   const onKeyPressHandler = (event) => {
       
   const {displayName, uid, photoURL} = User; 
-      const msg = UserInput.current.value;
-    
-     console.log(msg);
+      let msg = UserInput.current.value;
       if (event.key === 'Enter' || event.type === 'click') {
-        msg.replace(/ /g, '');
-        if(msg === "") {  
-       
-        }else{
+        if (/\S/.test(msg)) {
           addmessage(msg,displayName,uid,photoURL); 
-        }
+      }  
           UserInput.current.value = '';
-       
       };
   }
 
