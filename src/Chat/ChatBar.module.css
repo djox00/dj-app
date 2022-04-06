@@ -85,6 +85,9 @@ position: relative;
    transform: scale(1.9)   rotate(15deg);
    margin-left: 10px;   
 }
+
+
+
 .message-send:hover{
     cursor: pointer;
 }

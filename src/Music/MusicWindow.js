@@ -64,16 +64,17 @@ const removeFromqueue = () =>{
 const playVideo = (e) =>{
 e.target.setVolume(MusicVolume);
 e.target.playVideo();
-console.log(e.target)
+console.log(e.target)              
+}
+const limitDuration =  (e) =>{
+ const duration =  e.target.getDuration(); 
+ if(duration > 420){
+  deleteDoc(doc(db,"queue",queue[0].id));   // if video is longer than 8 minutes It will be skipped 
 
-
+ }
 }
 
 const [MusicVolume, setMusicVolume] = useState(1); 
-
-const video = useRef(); 
-
-
 
 
     return (
@@ -87,7 +88,7 @@ const video = useRef();
             onStateChange={playVideo}
             className={styled.video}
             onEnd={removeFromqueue} 
-         
+            onReady={limitDuration}
            
           
             

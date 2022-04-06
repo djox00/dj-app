@@ -12,6 +12,7 @@
 .navBar{
     min-height: 5vh;
     font-family: 'Share Tech Mono', monospace;
+    
 }
 .login{
     position: absolute;

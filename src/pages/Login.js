@@ -20,6 +20,7 @@ import firebase from 'firebase/compat/app';
 
 const Login = () => {
 
+  
 
   // login refs 
   const LoginemailRef = useRef();
@@ -32,8 +33,11 @@ const Login = () => {
 
   // react to the user that is logged in 
   onAuthStateChanged(auth, (currentUser) => { setUser(currentUser); })
-
   const navigate = useNavigate();
+
+  if(auth.currentUser!=null){ navigate("/Home");}
+
+
 
   // if status is true the errorMessage will be displayed  
   const [ErrorStatus, setErrorStatus] = useState(false);
