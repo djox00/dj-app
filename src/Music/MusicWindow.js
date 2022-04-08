@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import styled from './MusicWindow.module.scss'
 import YouTube from 'react-youtube';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,7 +9,6 @@ import { useFirestoreQuery } from '../costumHooks/firebase-hooks';
 import { deleteDoc, doc, limitToLast } from 'firebase/firestore';
 import { query, collection, getFirestore, orderBy } from 'firebase/firestore';
 import VolumeSlider from '../Small-UI-components/VolumeSlider';
-import { useRef } from 'react';
 const API_KEY = 'AIzaSyAaJqC70Z5FvaOtwtKvHc_RJ5hh86fa6dQ'; 
 
 const MusicWindow = () => {
@@ -100,9 +99,9 @@ const [MusicVolume, setMusicVolume] = useState(1);
       <div className={styled['queue-container']}>   
      <p> Queue: </p> <div className={styled['add-track-button']}> <button onClick={SBcontext.SBtoggle}>  <FontAwesomeIcon icon={faPlus} /> <FontAwesomeIcon icon={faCompactDisc}/>   </button>  </div>
       <div className={styled.queue}> 
-      
+      <Suspense fallback={'Loading...'}> 
 {queue && queue.slice(1).map((data)=>{return (<p key={data.videoid}>   <img src={data.photoURL || `https://avatars.dicebear.com/api/initials/${data?.displayName}.svg`} /> {data.videotitle}  </p>)}) }
-      
+      </Suspense>
       </div>
       </div>
         </React.Fragment>

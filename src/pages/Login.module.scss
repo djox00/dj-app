@@ -1,13 +1,8 @@
 
-.App{  background-color: rgb(41, 138, 109);
+@import '../Styles/modules';
+.page{  
     min-height: 90vh;
-}
-
-
-.authentication{
-    background-color: rgb(41, 138, 109);
-    
-
+    @include background(); 
 }
 
 @media screen and (max-width: 480px) {

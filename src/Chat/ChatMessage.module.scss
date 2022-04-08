@@ -1,0 +1,85 @@
+
+
+
+ul{padding: 10px;}
+ul, li {
+    text-align: left;
+    list-style: none;
+  }
+  
+
+ 
+  
+  .message {
+    display: flex;
+    align-items: center;
+    word-break: break-all;
+    p {
+    
+      max-width: 500px;
+      margin-bottom: 12px;
+      line-height: 24px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 15px;
+      position: relative;
+      color: white;
+      text-align: center;
+    }
+
+
+  }
+
+  .sent {
+    flex-direction: row-reverse;
+    p {
+      color: white;
+      background: rgba(43, 169, 201, 0.664);
+      align-self: flex-end;
+    }
+  }
+  
+
+  .received p {
+    background: rgba(51, 209, 248, 0.864);
+    color: black;
+  }
+  
+  .message > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 2px 5px;
+
+  }
+  .displayName{
+      color: rgb(110, 110, 110);
+      margin-left: 50px;
+      font-size: 15px;
+  }
+
+
+  @media only screen and (max-width: 452px) {
+ 
+    .message p {
+      font-size: 14px;
+    }
+    .displayName{
+      font-size: 14px;
+    }
+    .message > img{
+
+      width: 35px;
+      height: 35px;
+    }
+  
+  }
+
+  @media only screen and (max-width: 360px) {
+    .message p {
+      font-size: 13px;
+    }
+    .displayName{
+      font-size: 13px;
+    }
+  }

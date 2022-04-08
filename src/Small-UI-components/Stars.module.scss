@@ -6,6 +6,8 @@
     height: 90vh;
    overflow: hidden;
     animation: animateBg 120s linear infinite;
+    z-index: 0;
+
 }
 @keyframes animateBg {
     0%,100%

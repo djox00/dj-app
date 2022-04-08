@@ -1,3 +1,6 @@
+
+@import '../Styles/modules'; 
+
 .main {
     background-color: #ffffff;
     min-width: 350px;
@@ -8,10 +11,7 @@
     bottom: 10rem;
     border-radius: 1.5em;
     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.384);
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    @include noselect;
     position: relative;
  
   
@@ -52,10 +52,8 @@
   }
  .form {
     padding-top: 40px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    @include noselect;
+
     hr{
       width: 70%;
       margin-left: 15%;
@@ -109,10 +107,7 @@
     font-size: 13px;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
     font-weight: 700;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+   @include noselect;
     transition: 0.3s;
     &:hover {
       box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, 0.644);
