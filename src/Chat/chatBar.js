@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {lazy, Suspense } from 'react';
 import styled from './ChatBar.module.scss'
 import { useState, useEffect, useReducer, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,6 +11,10 @@ import { getFirestore } from '@firebase/firestore';
 import { collection, addDoc, getDocs, orderBy, limit, query } from '@firebase/firestore';
 import { useFirestoreQuery } from '../costumHooks/firebase-hooks';
 import { limitToLast } from 'firebase/firestore';
+
+
+const ChatMessage = lazy( () => import('./ChatMessage') ); 
+
 
 const ChatBar = () => {
 
@@ -75,32 +79,6 @@ let msgField = <div  className={styled["message-input"]}>
 </div> 
 
 
-function ChatMessage(props) {
-  const { displayName, text, uid, photoURL, createdAt} = props.message;
-  let messageClass = 'received'; 
-  let date = new Date(createdAt?.seconds * 1000).toUTCString(); // need to implement
-
-
-
-  if(User!=null){   
-   messageClass = (uid === User.uid) ? 'sent' : 'received';
-  }
-
-  return (<>
-    {(displayName && messageClass!=='sent')? (
-            <div className={styled.displayName} >{displayName } </div>
-          ) : null}
-    <div className={`${styled.message} ${styled[messageClass]} `}>
-      
-      <img src={photoURL || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} />
-     
-    <p>{text}</p>
-    </div>
-
-
-  </>)}
-
-
 
 
     return (
@@ -108,10 +86,12 @@ function ChatMessage(props) {
         <div className={styled.frame}>   
         <div className={styled["chat-container"]}>   
           <div className={styled["message-window"]}>
-          
+          <Suspense fallback={'Loading...'}>
          <ul>  
+           
           {messages && messages.map(msg => <li key={msg.id}> <ChatMessage  message={msg} /></li> )}
           </ul>
+          </Suspense>
             <span ref={autodown}> </span>
           </div>
 

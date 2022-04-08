@@ -16,6 +16,7 @@ import Confirm from '../UI/Confirm'
 
 
 
+
 const API_KEY = 'AIzaSyAaJqC70Z5FvaOtwtKvHc_RJ5hh86fa6dQ';
 
 const Sidebar = () => {
@@ -127,19 +128,19 @@ const addToQueue = async (displayName, photoURL, uid, videoid, videoTitle) =>{
   return (
     <React.Fragment>
         
-      <animated.div style={backdrop}>
-        <div className={styled.backdrop}>
-          <animated.div style={sidebar} >
+        <animated.div style={backdrop} >
+<div className={styled.backdrop} > 
+      
+        <animated.div style={sidebar} >
             <div className={styled.sidebar}>
             <Confirm value="add" ConfirmVideo={ConfirmVideo}  setConfirmVideo={setConfirmVideo}> Do you want to add this video to the play queue? </Confirm>
               <div className={styled.close}><FontAwesomeIcon onClick={SBcontext.SBtoggle} className={styled['close-button']} icon={faXmark} /></div>
               <div className={styled['search-field']}>   <input type="text" ref={UserInput} onKeyUp={onKeyPressHandler} /> <FontAwesomeIcon className={styled['search-icon']} icon={faSearch} onClick={onKeyPressHandler} /></div>
               <div className={styled['search-result']}>{videoList ? videoList : ''} </div>
             </div>
-          </animated.div>
-        </div>
-      </animated.div>
-
+          </animated.div> 
+          </div>
+          </animated.div> 
     </React.Fragment>
   )
 }

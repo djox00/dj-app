@@ -21,10 +21,21 @@
         margin: 2px 5px;   
 }
 
-
-  
 }
-@media only screen and (max-width: 638px) {
+
+
+.video{
+   top: 10px;
+    width: 80%;
+    height: 400px;
+    border-radius: 20px;
+    position: relative;
+   
+ 
+}
+
+
+  @media only screen and (max-width: 638px) {
     .video {
         width: 90%;
         height: 300px;
@@ -40,29 +51,6 @@
     }
   }
 
-
-
-.video{
-   top: 10px;
-    width: 80%;
-    height: 400px;
-    border-radius: 20px;
-    position: relative;
-   
- 
-}
-
-
-  .queue img{
-    
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin: 2px 5px;
-    
-     
-  }
-
   @media only screen and (max-width: 402px) {
     .video {
         width: 90%;
@@ -75,19 +63,9 @@
     .video-container p{
        font-size: 12px;
     }
-    .queue img{
-        transform: scale(0.8);
-    }
-    .queue > p {
-        font-size: 12px;
-     }
-
-   
-    
   }
-
-
-.queue{
+    
+  .queue{
     max-width: 100%;
     min-height: 200px;
     max-height: 220px;
@@ -101,20 +79,27 @@
     p {
         color: rgb(255, 255, 255); 
      }
+
+    img{
+    
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin: 2px 5px;
+        transform: scale(0.8);
+     
+    }
+
+   & > p {
+        font-size: 12px;
+    }
+
+  } 
   
-}
 
-
-
-.queue-container > p {margin-top: 50px;
-color: white;
-display: inline-block;
-
-}
 .add-track-button{
     display: inline-block;
 }
-
 
 
 .playbox{
@@ -126,6 +111,11 @@ display: inline-block;
 }
 .queue-container{
     font-family: 'Share Tech Mono', monospace;
+    & > p {margin-top: 50px;
+        color: white;
+        display: inline-block;
+        
+        }
 }
 .volume{
     width: 100%;

@@ -35,7 +35,7 @@ const Login = () => {
   onAuthStateChanged(auth, (currentUser) => { setUser(currentUser); })
   const navigate = useNavigate();
 
-  if(auth.currentUser!=null){ navigate("/Home");}
+  /* if(auth.currentUser!=null){ navigate("/Home");} */
 
 
 
@@ -123,7 +123,7 @@ const Login = () => {
 
     <React.Fragment>
 
-      <div className={styled.App}>
+      <div className={styled.page}>
         {ErrorStatus ? <Error>{errorMessage}</Error> : ''}
         <div className={styled.authentication}>
           {displayLogin ?
