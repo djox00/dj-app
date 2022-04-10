@@ -31,23 +31,13 @@ const ChatMessage = (props) => {
             ) : null}
       <div className={`${styled.message} ${styled[messageClass]} `}>
         
-        <img src={photoURL || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} />
+        <img src={photoURL || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} alt="error" />
        
       <p>{text}</p>
       </div>
   
   
     </>)
-
-
-
-
-
-
-
-
-
-
 
 
 
