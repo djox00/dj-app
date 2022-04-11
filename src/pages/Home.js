@@ -1,16 +1,17 @@
 import React, {lazy, Suspense} from 'react';
 import styled from './Home.module.scss';
-import Footer from '../UI/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ChatBar from '../Chat/chatBar';
 import MusicWindow from '../Music/MusicWindow';
-import { Container, Row, Col } from 'react-bootstrap';
+import {  Row, Col } from 'react-bootstrap';
 import { auth } from '../firebase-config';
 import { SideBarContextProvider } from '../StateProviders/siderbar-toggle';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useState } from 'react';
 import Stars from '../Small-UI-components/Stars';
-const Sidebar = lazy(() => import('../Music/Sidebar') );  
+import Loading from '../Small-UI-components/Loading';
+import Sidebar from '../Music/Sidebar'
+import Footer from '../UI/Footer';
 
 
 
@@ -27,7 +28,8 @@ const Home = () => {
     <React.Fragment>  
 <SideBarContextProvider>   
 
-     {User!=null ? <Suspense fallback={"Loading..."}> <Sidebar   />   </Suspense> : '' } 
+     {User!=null ? <Sidebar   />  : '' } 
+    {/*  {User!=null ? <Suspense fallback={<Loading>Loading...</Loading>}> <Sidebar   />   </Suspense> : '' }   pravi bug tj prikazuje prazan div umjesto load elementa */}
     <div className={styled.page}>
    <Stars /> 
      
@@ -42,6 +44,8 @@ const Home = () => {
      </div>
  
     </div>
+
+   
     </SideBarContextProvider>
     </React.Fragment>
   )

@@ -1,16 +1,17 @@
 import React, {lazy, Suspense } from 'react';
 import styled from './ChatBar.module.scss'
-import { useState, useEffect, useReducer, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationArrow,faRocket } from '@fortawesome/free-solid-svg-icons';
+import { faRocket } from '@fortawesome/free-solid-svg-icons';
 import { auth } from '../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { getFirestore } from '@firebase/firestore';
-import { collection, addDoc, getDocs, orderBy, limit, query } from '@firebase/firestore';
+import { collection, addDoc, orderBy,  query } from '@firebase/firestore';
 import { useFirestoreQuery } from '../costumHooks/firebase-hooks';
 import { limitToLast } from 'firebase/firestore';
+import Loading from '../Small-UI-components/Loading';
 
 
 const ChatMessage = lazy( () => import('./ChatMessage') ); 
@@ -43,7 +44,7 @@ const q = query(messageRef,orderBy('createdAt'),limitToLast(25));
 const messages = useFirestoreQuery(q); 
 
 useEffect(() => {
-  autodown.current.scrollIntoView({ behavior: 'smooth' });
+  autodown.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
 }, [messages])
 
 
@@ -86,9 +87,8 @@ let msgField = <div  className={styled["message-input"]}>
         <div className={styled.frame}>   
         <div className={styled["chat-container"]}>   
           <div className={styled["message-window"]}>
-          <Suspense fallback={'Loading...'}>
+          <Suspense fallback={<Loading>Loading...</Loading>}>
          <ul>  
-           
           {messages && messages.map(msg => <li key={msg.id}> <ChatMessage  message={msg} /></li> )}
           </ul>
           </Suspense>

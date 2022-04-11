@@ -1,0 +1,5 @@
+@import '../Styles/modules'; 
+.page{
+    height: 90vh;
+    @include background(); } 
+    

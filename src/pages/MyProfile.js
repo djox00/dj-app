@@ -29,7 +29,7 @@ const MyProfile = () => {
      <div className={styled.panel}> 
   
      <div className={styled.container}>
-     <img src={User?.photoURL} />
+     <img src={User?.photoURL} alt="no img" />
      <div className={styled.middle}>
     <div className={styled.text}>Change image</div>
   </div>  
@@ -42,6 +42,7 @@ const MyProfile = () => {
 <input  type="number" placeholder="Phone number" value={User?.phoneNumber}  />
 
 <button value="Apply change"/>
+
 
 
 

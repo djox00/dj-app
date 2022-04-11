@@ -35,6 +35,7 @@
         position: relative;
         width: auto;
         
+        
         &:hover .image {
             opacity: 0.3;
           }
@@ -77,6 +78,9 @@
             
            
           }
+          .text:hover{
+              cursor: pointer;
+          }
 
       }
  
@@ -88,8 +92,8 @@
 width: 80%;
 left: 10%;
 position: relative;
-
-
+margin-top: 60px;
+text-align: left;
 
 
 input{
@@ -98,18 +102,20 @@ input{
 }
 button{
     width: 30%;
+    height: 30px;
 }
 
 
 
 
 
-}
+} 
 
 
 
 
-      
+
+
 }    
 }
 
