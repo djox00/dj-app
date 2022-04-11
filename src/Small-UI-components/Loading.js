@@ -1,13 +1,17 @@
-import styled from 'styled-components'
+import React from 'react'
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
-const Loading = styled.div`   
-background-color: none; 
-position: absolute, 
-top: 0; 
-left: 50px; 
-color: white; 
-font-size: 15px; 
+const Loading = () => {
+  return (
+    <Backdrop
+  sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+  open={true}
 
+>
+  <CircularProgress color="inherit" />
+</Backdrop>
+  )
+}
 
-`
 export default Loading

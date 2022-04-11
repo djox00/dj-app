@@ -6,6 +6,7 @@ import { query, collection, getFirestore, orderBy } from 'firebase/firestore';
 import VolumeSlider from '../Small-UI-components/VolumeSlider';
 import Queue from './Queue';
 import Loading from '../Small-UI-components/Loading';
+
 const YouTube = lazy(()=> import('react-youtube'));
 
 
@@ -59,10 +60,10 @@ const MusicWindow = () => {
   return (
 
     <React.Fragment>
-<Suspense fallback={<Loading>Loading...</Loading>}>
+<Suspense fallback={"Loading"} >
       <div className={styled['video-container']}>
 
-      
+
         <YouTube opts={opts}
           videoId={queue[0]?.videoid}
           onStateChange={playVideo}

@@ -44,7 +44,7 @@ const q = query(messageRef,orderBy('createdAt'),limitToLast(25));
 const messages = useFirestoreQuery(q); 
 
 useEffect(() => {
-  autodown.current.scrollIntoView({ behavior: 'smooth' });
+  autodown.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
 }, [messages])
 
 

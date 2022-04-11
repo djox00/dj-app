@@ -11,6 +11,7 @@ import { useState } from 'react';
 import Stars from '../Small-UI-components/Stars';
 import Loading from '../Small-UI-components/Loading';
 import Sidebar from '../Music/Sidebar'
+import Footer from '../UI/Footer';
 
 
 
@@ -43,6 +44,8 @@ const Home = () => {
      </div>
  
     </div>
+
+   
     </SideBarContextProvider>
     </React.Fragment>
   )

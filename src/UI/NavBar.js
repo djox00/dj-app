@@ -6,6 +6,7 @@ import {faCompactDisc, faUserAstronaut, faArrowRightFromBracket } from '@fortawe
 import { signOut,onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase-config';
 import { useState } from 'react';
+import AudiotrackOutlinedIcon from '@mui/icons-material/AudiotrackOutlined';
 
 const NavBar = (props) => {
 const [User, setUser] = useState(null); 
@@ -22,7 +23,7 @@ const logout = async () =>{
 
 <Navbar className={styled.navBar} collapseOnSelect expand="lg" bg="dark" variant="dark"  >
  
-  <div className={styled['dj-room']}>   <Navbar.Brand href='Home' ><FontAwesomeIcon icon={faCompactDisc} /> Music Room</Navbar.Brand></div>
+  <div className={styled['dj-room']}>   <Navbar.Brand href='Home' ><AudiotrackOutlinedIcon style={{color: "rgba(41, 145, 113, 0.823)", transform: "scale(1.2)"}} /> Music Room</Navbar.Brand></div>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{border : "none", boxShadow : "none"}} />
   <Navbar.Collapse id="responsive-navbar-nav" c={true}>
     <Nav style={{marginLeft: "20px"}} >

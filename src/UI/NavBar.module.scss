@@ -19,10 +19,12 @@
     position: absolute;
     right: 0;
     font-size: 17px;
+    
+    
 }
 
 .login-text{
-    color: rgba(32, 131, 170, 0.671);
+    color:  rgba(32, 131, 170, 0.671);
     font-weight: 500;
     &:hover{
         color: rgba(32, 131, 170, 0.904);
@@ -36,7 +38,7 @@
 }
 
 .logout-text{
-    color: rgba(41, 138, 109, 0.623);
+    color: rgba(41, 145, 113, 0.623);
     font-weight: 500;
     &:hover{
         color: rgb(41, 138, 109);
