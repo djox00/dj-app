@@ -9,7 +9,8 @@ import { useState } from 'react';
 import AudiotrackOutlinedIcon from '@mui/icons-material/AudiotrackOutlined';
 
 const NavBar = (props) => {
-const [User, setUser] = useState(null); 
+const [User, setUser] = useState(''); 
+
   onAuthStateChanged(auth,(currentUser)=>{ setUser(currentUser); })
 
 console.log(User); 
@@ -17,6 +18,19 @@ console.log(User);
 const logout = async () =>{ 
   await signOut(auth); 
 }
+
+const SignUp = () =>{
+
+if(User){ 
+  return (  <Nav.Link className={styled['logout-text']} onClick={logout} > <FontAwesomeIcon  icon={faArrowRightFromBracket} /> Log out </Nav.Link>   )
+}
+if(User==null) {return ( <Nav.Link className={styled['login-text']} href="Login"><FontAwesomeIcon className={styled['login-icon']} icon={faUserAstronaut} />Login</Nav.Link>   )}
+
+return(''); 
+
+}
+
+
 
     return (
         <React.Fragment>
@@ -30,10 +44,9 @@ const logout = async () =>{
       <Nav.Link href="Rules">Rules</Nav.Link>
       <Nav.Link href="Info">Info</Nav.Link>
       <Nav.Link href="MyProfile">My Profile</Nav.Link>
-    
     </Nav>
     
-    <div className={styled.login}> {User==null ? <Nav.Link className={styled['login-text']} href="Login"><FontAwesomeIcon className={styled['login-icon']} icon={faUserAstronaut} />Login</Nav.Link> : <Nav.Link className={styled['logout-text']} onClick={logout} > <FontAwesomeIcon  icon={faArrowRightFromBracket} /> Log out </Nav.Link>}   </div>
+    <div className={styled.login}> <SignUp />    </div>
   
   </Navbar.Collapse>
 

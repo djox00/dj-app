@@ -1,0 +1,45 @@
+.message-input input{
+    position: relative;
+    margin-left: 2.5%;
+    border-radius: 5px;
+    padding: 5px;
+    width: 80%;
+    background-color: rgba(187, 187, 187, 0.658);
+    color: white;
+    border: none;
+    &:focus{
+      outline: none;
+     
+  }
+  &::placeholder{
+    color: rgba(255, 255, 255, 0.596);
+  }
+
+  @media only screen and (max-width: 990px) {
+    & {
+      top: -9px;
+    }
+  }
+   
+}
+
+
+
+
+
+.message-send{
+  color: rgba(43, 169, 201, 0.664);
+  position: relative;
+ transform: scale(1.9)   rotate(15deg);
+ margin-left: 10px;   
+
+ @media only screen and (max-width: 990px) {
+    & {
+      top: -6px;
+    }
+  }
+
+ &:hover{
+  cursor: pointer;
+ }
+}

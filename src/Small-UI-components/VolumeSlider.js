@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVolumeLow, faVolumeHigh,faVolumeXmark } from '@fortawesome/free-solid-svg-icons';
 import styled from './VolumeSlider.module.scss'
 const VolumeSlider = ({setMusicVolume}) => {
-    const [volume, setVolume] = useState(1);
+    const [volume, setVolume] = useState(50);
     const [muted, setMuted] = useState(false);
     const [finalVolume, setfinalVolume] = useState(1);
     setTimeout(()=>{
