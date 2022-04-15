@@ -19,29 +19,29 @@
     position: absolute;
     right: 0;
     font-size: 17px;
-    
+ 
     
 }
 
 .login-text{
-    color:  rgba(32, 131, 170, 0.671);
+     color: rgba(255,255,255) !important;
     font-weight: 500;
     &:hover{
-        color: rgba(32, 131, 170, 0.904);
+        color: rgba(156, 156, 156, 0.904) !important;
     }
 }
 
 .login-icon{
    margin-right: 5px ;
    transform: scale(1.2);
-   color: whitesmoke;
+    color: rgba(41, 145, 113, 0.823); 
 }
 
 .logout-text{
-    color: rgba(41, 145, 113, 0.623);
+    color: rgba(41, 145, 113, 0.623) !important;
     font-weight: 500;
     &:hover{
-        color: rgb(41, 138, 109);
+        color: rgb(41, 138, 109)!important;
       
     }
 }

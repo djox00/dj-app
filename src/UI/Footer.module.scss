@@ -1,10 +1,33 @@
-.footer{
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
+.footer{
+    z-index: 30;
     width: 100%;
     position: relative;
     bottom: 0;
     text-align: center;
     color: rgb(33, 37, 41);
   hr{color: white; width: 70%; left: 15%; position: relative;}
+
+
+  .action{
+    color: rgba(41, 145, 113, 0.823) !important;
+     transform: scale(1.1); 
+   
+  }
+  .icon{
+    color: white;
+     transform: scale(1.2);
+     
+  }
+  
+  @media screen and (max-width: 615px) {
+    .action, .icon{
+       transform: scale(1); 
+    }
+  }
+    
+
+
   
 }

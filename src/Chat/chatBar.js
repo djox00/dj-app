@@ -12,14 +12,16 @@ import { collection, addDoc, orderBy,  query } from '@firebase/firestore';
 import { useFirestoreQuery } from '../costumHooks/firebase-hooks';
 import { limitToLast } from 'firebase/firestore';
 import Loading from '../Small-UI-components/Loading';
-
+import InputField from './InputField';
 
 const ChatMessage = lazy( () => import('./ChatMessage') ); 
 
 
 const ChatBar = () => {
 
-  
+
+
+
  const db = getFirestore(); 
   const messageRef = collection(db,"messages"); 
 const addmessage = async (message,displayName,uid,photoURL) =>{  
@@ -57,27 +59,20 @@ useEffect(() => {
 
 
 
-  const UserInput = useRef();
+
   const autodown = useRef(); 
-  const onKeyPressHandler = (event) => {
-      
+
+
+  const onMessageAddHandler = (text) => {
+      console.log(text);
   const {displayName, uid, photoURL} = User; 
-      let msg = UserInput.current.value;
-      if (event.key === 'Enter' || event.type === 'click') {
+      let msg = text;     
         if (/\S/.test(msg)) {
           addmessage(msg,displayName,uid,photoURL); 
-      }  
-          UserInput.current.value = '';
+      
+        
       };
   }
-
-
-
-
-let msgField = <div  className={styled["message-input"]}>   
-<input  ref={UserInput} type="text" placeholder="Write a message..." onKeyPress={onKeyPressHandler}  />
-<FontAwesomeIcon className={styled["message-send"]} icon={faRocket} onClick={onKeyPressHandler} />
-</div> 
 
 
 
@@ -95,7 +90,7 @@ let msgField = <div  className={styled["message-input"]}>
             <span ref={autodown}> </span>
           </div>
 
-         {User!=null ? msgField : ''}
+         {User!=null ? <InputField onMessageAddHandler={onMessageAddHandler}/> : ''}
         </div>
         </div>
 
