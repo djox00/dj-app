@@ -13,6 +13,7 @@ import SideBarToggleContext from '../StateProviders/siderbar-toggle'
 import { auth } from '../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
 import Confirm from '../UI/Confirm'
+import ReactDOM from 'react-dom'
 
 
 
@@ -103,7 +104,6 @@ setConfirmVideo((prev)=>{return{...prev,addVideo: false }});
 
 const addToQueue = async (displayName, photoURL, uid, videoid, videoTitle) =>{  
   
-
   try {
 
     const docRef = await addDoc(queueRef, {
@@ -125,12 +125,14 @@ const addToQueue = async (displayName, photoURL, uid, videoid, videoTitle) =>{
 
 
 
+
+
   return (
+
     <React.Fragment>
-        
-        <animated.div style={backdrop} >
+
+      {ReactDOM.createPortal(<animated.div style={backdrop} >
 <div className={styled.backdrop} > 
-      
         <animated.div style={sidebar} >
             <div className={styled.sidebar}>
             <Confirm value="add" ConfirmVideo={ConfirmVideo}  setConfirmVideo={setConfirmVideo}> Do you want to add this video to the play queue? </Confirm>
@@ -140,7 +142,8 @@ const addToQueue = async (displayName, photoURL, uid, videoid, videoTitle) =>{
             </div>
           </animated.div> 
           </div>
-          </animated.div> 
+          </animated.div> ,document.getElementById("sidebar"))}
+        
     </React.Fragment>
   )
 }

@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+.page{
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("../images/landing-page2.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Share Tech Mono', monospace;
+    
+}
+
+
+
+body::-webkit-scrollbar {
+    width: 13px;
+  
+  }
+  
+body::-webkit-scrollbar-track {
+    background: #5f5f5fa1;
+    
+  }
+  
+  
+body::-webkit-scrollbar-thumb {
+    background: rgb(27, 131, 100); 
+    border-radius: 20px;
+    
+  }
+  .row{
+    width: 100%;
+    padding-bottom: 50px;
+    text-align: center;
+    .col{
+      text-align: center;
+
+      h1{
+        color: rgb(231, 231, 231); 
+        margin-top: 50px;
+      }
+      h2{
+        padding: 20px;
+        color: rgb(231, 231, 231);
+      
+      }
+
+      h3{
+        padding: 20px;
+        color: rgb(231, 231, 231);
+      
+      }
+      & > img{
+        max-width: 450px;
+        margin-top: -30px;
+       
+      }
+      .components{
+        & >img {
+          width: 65px;
+          border-radius: 10px;
+          margin: 10px 15px;
+        }
+      }
+
+      @media screen and (max-width: 450px) {
+        & > img{
+          max-width: 100%;
+         
+       
+          
+        }
+
+
+      }
+
+
+
+    }
+
+
+  }
+ 
+
+  
+
+  
+
+  

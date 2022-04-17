@@ -8,10 +8,20 @@
   }
   .page {
   @include background(); 
+
+
+  
    }   
   .content{
     min-height: 90vh;
    
   }
+  .sb-visible{
+    overflow-x: hidden;
+    overflow-y: scroll !important;
+    
+  }
+ 
+  
 
  

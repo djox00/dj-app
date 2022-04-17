@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 .frame {
-  
     z-index: 100;
     min-width: 300px;
     max-width: 350px;
@@ -11,6 +10,7 @@
     top: 500px;
     left: 0;
     transform: translate(-50%, -50%);
+
     button{
         width: 100px;
         height: 45px;
@@ -51,12 +51,6 @@
     }
     
 }
-
-
-
-
-
-
 
 .center{
     width: 100%;
