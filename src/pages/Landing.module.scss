@@ -45,11 +45,23 @@ body::-webkit-scrollbar-thumb {
         color: rgb(231, 231, 231);
       
       }
+
+      h3{
+        padding: 20px;
+        color: rgb(231, 231, 231);
+      
+      }
       & > img{
         max-width: 450px;
+        margin-top: -30px;
        
-     
-        
+      }
+      .components{
+        & >img {
+          width: 65px;
+          border-radius: 10px;
+          margin: 10px 15px;
+        }
       }
 
       @media screen and (max-width: 450px) {
@@ -59,6 +71,8 @@ body::-webkit-scrollbar-thumb {
        
           
         }
+
+
       }
 
 
