@@ -1,0 +1,61 @@
+.badge-container{
+    width: 100%;
+    height: auto;
+    text-align: center;
+  
+
+
+    .profile{
+
+     width: 300px;
+     height: 280px;
+     margin: auto;
+     background-color: rgb(70, 155, 126);
+     border-radius: 10px;
+
+
+
+    & > img{
+        margin-top: 5px;
+        border-radius: 50%;
+        height: 80px;
+    }
+   & > p{
+        color: white;
+        margin-top: 5px;
+    }
+    a{text-decoration: none;}
+
+
+        .badge{
+            width: 250px;
+            height: 45px;
+            margin: auto;
+            background-color: rgb(207, 207, 207);
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+
+            & > img{
+                height: 35px;
+                border-radius: 50%;
+                margin-top: 5px;
+                margin-left: 15px;
+            }
+
+            & > p{
+                display: inline;
+                margin-left: 7px;
+                color: rgb(73, 73, 73);
+            
+               
+            }
+
+        }
+    
+    }
+
+
+}
+
+

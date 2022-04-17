@@ -12,6 +12,9 @@ import Footer from './UI/Footer';
 import Rules from './pages/Rules';
 import Loading from './Small-UI-components/Loading';
 import  Home  from './pages/Home';
+import Landing from './pages/Landing';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { SideBarContextProvider } from './StateProviders/siderbar-toggle';
 
 function App() {
 
@@ -21,16 +24,22 @@ function App() {
     <Router>
            <NavBar/> 
    <Routes>
-        <Route path="/Home" element={ <Home/>  }/>
+      
+        <Route path="/Home" element={<SideBarContextProvider> <Home/> </SideBarContextProvider> }/>
+      
         <Route path="/Login" element={ <Login/> } />
         <Route path="/MyProfile" element={ <MyProfile />} />
         <Route path="/Rules" element={ <Rules/> } />
+        <Route exact path="/" element={ <Landing />} />
+
       </Routes>
      
    </Router>
+  
    <footer> <Footer/></footer>
    </Fragment>
   );
 }
+
 
 export default App;

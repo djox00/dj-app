@@ -8,6 +8,7 @@ import { updateProfile } from 'firebase/auth';
 
 
 
+
 const MyProfile = () => {
 
     const [User, setUser] = useState(''); 
@@ -56,7 +57,9 @@ const MyProfile = () => {
 
 
      </div>
+     
     </div>
+    
     </Fragment>
   )
 }

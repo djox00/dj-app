@@ -3,6 +3,8 @@ import styled from './Confirm.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { useSpring, animated } from 'react-spring'
+import ReactDOM from 'react-dom'
+
 const Confirm = (props) => {
 
 
@@ -21,13 +23,14 @@ const Confirm = (props) => {
 
   return (
     <Fragment>
-    <animated.div style={popup}>   
+{ReactDOM.createPortal( <animated.div style={popup}>   
      <div className={styled.frame}  > 
      <div className={styled.close}><FontAwesomeIcon   icon={faXmark} onClick={closeBox} /></div>
      <p> {props.children}  </p>
     <div className={styled.center}> <button onClick={ConfirmVideo} > <span> {props.value}  </span> </button>  </div> 
      </div>    
-     </animated.div>
+     </animated.div>, document.getElementById("modal")     )}
+    
     </Fragment>
   )
 }
