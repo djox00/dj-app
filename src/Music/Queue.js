@@ -12,8 +12,9 @@ const Queue = (props) => {
 
   return (
     <Fragment> 
-    <div className={styled['queue-container']}>   
-     <p> Queue: </p> <div className={styled['add-track-button']}> <button onClick={SBcontext.SBtoggle}>  <FontAwesomeIcon icon={faPlus} /> <FontAwesomeIcon icon={faCompactDisc}/>   </button>  </div>
+    <div className={styled['queue-container']}>  
+    <div className={styled['add-track-button']}> <button onClick={SBcontext.SBtoggle}>  <FontAwesomeIcon className={styled.plus} icon={faPlus} /> <FontAwesomeIcon className={styled.disc} icon={faCompactDisc}/>   </button>  </div> 
+    <br/><p> Queue: </p> 
       <div className={styled.queue}> 
       {props.children}
       </div>

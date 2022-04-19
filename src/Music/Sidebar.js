@@ -22,17 +22,35 @@ const API_KEY = 'AIzaSyAaJqC70Z5FvaOtwtKvHc_RJ5hh86fa6dQ';
 
 const Sidebar = () => {
 
+
+  const [isMobile, setIsMobile] = useState(false)
+ 
+  
+  const handleResize = () => {
+    if (window.innerWidth < 720) {
+        setIsMobile(true)
+    } else {
+        setIsMobile(false)
+    }
+  }
+  
+  
+  useEffect(() => {
+    window.addEventListener("resize", handleResize)
+  })
+
+
   const SBcontext = useContext(SideBarToggleContext);
   const [clickedVideo, setclickedVideo] = useState({
    video_id: '',
    videoTitle: '',
 
   }); 
-
+console.log(isMobile)
 
   const sidebar = useSpring({
     transform: SBcontext.SBvisible ? "translateX(50%)" : "translateX(-50%)",
-    config: { duration: 600 }
+    config: { duration: isMobile ? 300 : 600 }
   });
   const backdrop = useSpring({
     visibility: SBcontext.SBvisible ? "visible" : "hidden",

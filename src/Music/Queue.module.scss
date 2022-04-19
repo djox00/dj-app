@@ -3,9 +3,25 @@
 
     .add-track-button{
         display: inline-block;
+
+        button{
+            border-radius: 5px;
+            border: none;
+            transform: scale(1.2);
+            
+
+            .plus{
+             transform: scale(0.9);
+            }
+            .disc{
+                transform: scale(1.1);
+                color: rgb(114, 19, 158);
+               
+            }
+        }
     }
 
-    & > p {margin-top: 30px;
+    & > p {margin-top: 20px;
         color: white;
         display: inline-block;
         
@@ -17,7 +33,7 @@
     min-height: 200px;
     max-height: 220px;
      margin: 0;
-    background-color: rgba(68, 163, 163, 0.295);
+    background-color: rgba(71, 71, 71, 0.395);
     border-radius: 10px;
     text-align: center;
     position: relative;
@@ -25,6 +41,7 @@
 
     p {
         color: rgb(255, 255, 255); 
+     
      }
 
     img{

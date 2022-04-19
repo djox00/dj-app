@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 .video-container{
     max-width: 100%;
-    min-height: 500px;
+    min-height: 470px;
     margin-top: 20px;
    text-align: center;
   overflow: hidden;
@@ -13,6 +13,8 @@
          text-align: left;
          font-family: 'Share Tech Mono', monospace;
          margin-left: 100px;
+         margin-top: 15px;
+        
      }
      img{
         width: 40px;
@@ -26,7 +28,7 @@
 .video{
    top: 10px;
     width: 80%;
-    height: 400px;
+    height: 365px;
     border-radius: 20px;
     position: relative;
     
@@ -51,21 +53,22 @@
     }
   }
 
-  @media only screen and (max-width: 402px) {
+  @media only screen and (max-width: 415px) {
     .video {
         width: 90%;
-        height: 200px;
+        height: 220px;
     }
     .video-container{
-        height: 250px;
+        min-height: 250px;
 
     }
     .video-container p{
+       
        font-size: 12px;
     }
   }
     
- 
+
   
 
 .playbox{
@@ -73,6 +76,7 @@
     width: 50px;
     background-color: rgb(177, 178, 179);
     position: relative;
+    background-color: rgb(233, 107, 245);
     
 }
 
