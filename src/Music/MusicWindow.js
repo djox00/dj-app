@@ -54,7 +54,7 @@ onAuthStateChanged(auth,(currentUser)=>{
   const playVideo = (e) => {
     e.target.setVolume(MusicVolume);
     e.target.playVideo();
-    console.log(e.target)
+    
   }
   const limitDuration = (e) => {
     const duration = e.target.getDuration();
@@ -106,7 +106,7 @@ console.log(User)
       {queue[0] ? (!like ? <FavoriteBorderIcon onClick={LikeHandler} style={{color: "white"}}/>   : <FavoriteIcon style={{color: "white"}} /> ) : ''}
                                      
 
-      {queue[0] ?  <p><span style={{ color: "rgb(36, 180, 108)" }}> Now playing:  </span>  <img src={queue[0]?.photoURL || `https://avatars.dicebear.com/api/initials/${queue[0]?.displayName}.svg` || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} alt={'error'} /> {queue[0]?.videotitle} </p> : ''}
+      {queue[0] ?  <p> <span style={{ color: "rgb(36, 180, 108)" }}> Now playing:    </span>  <span style={{ color: "rgb(223, 79, 245)", fontWeight: "bold" }}>{queue[0]?.displayName}</span>    <img src={queue[0]?.photoURL || `https://avatars.dicebear.com/api/initials/${queue[0]?.displayName}.svg` || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} alt={'error'} />  {queue[0]?.videotitle} </p> : ''}
     
       </div>
 
