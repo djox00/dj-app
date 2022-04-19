@@ -51,7 +51,7 @@ type="text" placeholder="Write a message..."   />
 
 <EmojisContainer>  <Picker style={{position: "absolute", bottom: 40, left: -300}} onSelect={addEmoji} />    </EmojisContainer>
 
-<FontAwesomeIcon type="submit"   className={styled["message-send"]}  icon={faRocket} onClick={handleSubmit}  />
+<FontAwesomeIcon type="submit"   className={styled["message-send"]}  icon={faRocket} onClick={handleSubmit}  /> 
 
 </form>
 </div> 

@@ -1,5 +1,59 @@
 @import '../Styles/modules'; 
 .page{
     height: 90vh;
-    @include background(); } 
+    @include background();
+    .panel{
+        width: 80%;
+        left: 10%;
+        top: 5%;
+        height: 80vh;
+        position: relative;
+        border-radius: 5px;
+        z-index: 1;
+        background: inherit;
+        overflow: hidden;
+        text-align: center;
+      
+    
+        &::before {
+            content: "";
+            position: absolute;
+            background: inherit;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: inset 0 0 2000px rgba(63, 63, 63, 0.5);
+            filter: blur(10px);
+            margin: -20px;
+          }
+        
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+} 
     

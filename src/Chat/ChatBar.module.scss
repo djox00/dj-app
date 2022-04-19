@@ -115,11 +115,19 @@ position: relative;
 
   ::-webkit-scrollbar {
     width: 13px;
-  
+    
+    
   }
+
+
+
+.message-window::-webkit-scrollbar-track-piece:start {
+    background: transparent;
+    margin-top: 25px;
+}
   
   .message-window::-webkit-scrollbar-track {
-    background: #383838a1;
+    background: transparent
     
   }
   

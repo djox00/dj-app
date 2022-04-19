@@ -4,12 +4,21 @@
     min-width: 300px;
     max-width: 350px;
     height: 250px;
-    background-color: rgb(23, 151, 119);
+    background-color: rgb(49, 49, 49);
     border-radius: 10px;
     position: fixed;
     top: 500px;
-    left: 0;
+    left: 0px;
     transform: translate(-50%, -50%);
+
+    @media screen and (max-width: 480px) {
+        &{ 
+            top: 50vh;
+            
+            
+
+        }
+      }
 
     button{
         width: 100px;
@@ -18,7 +27,7 @@
         position: relative;
         border-radius: 10px;
         border: none;
-        background-color: rgba(70, 72, 73, 0.445);
+        background-color: rgba(58, 180, 109, 0.445);
         color: white;
         font-family: 'Share Tech Mono', monospace;
         
@@ -29,18 +38,26 @@
             position: relative;
             padding: 10px 30px 10px 30px;
             text-align: center;
-            background-color: rgba(99, 97, 95, 0.514);
+            background-color: rgba(131, 131, 131, 0.445);
             font-family: 'Share Tech Mono', monospace;
         }
+    }
 
-  }
+
+
+
+   
+
+
+
+
   .close{
     position: relative;
     width: 100%;
     text-align: right;
     top: 10px;
     right: 15px;
-    color: rgba(185, 14, 14, 0.664);
+    color: rgba(187, 35, 35, 0.808);
     svg {
         transform: scale(2);
         transition: 0.3s;
@@ -56,7 +73,6 @@
     width: 100%;
     text-align: center;
     height: 80%;
-
     
 }
   
