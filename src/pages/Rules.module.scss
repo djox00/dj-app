@@ -1,4 +1,5 @@
 @import '../Styles/modules'; 
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 .page{
     height: 90vh;
     @include background();
@@ -27,6 +28,17 @@
             box-shadow: inset 0 0 2000px rgba(63, 63, 63, 0.5);
             filter: blur(10px);
             margin: -20px;
+          }
+
+
+          ul{
+            list-style-type:none;
+            font-family: 'Share Tech Mono', monospace;
+            letter-spacing: -0.5px;
+            li{
+              margin-top: 10px;
+              color: white;
+            }
           }
         
         }
