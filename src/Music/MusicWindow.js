@@ -1,17 +1,15 @@
 import React, { useState, Suspense, lazy } from 'react';
 import styled from './MusicWindow.module.scss'
 import { useFirestoreQuery } from '../costumHooks/firebase-hooks';
-import { deleteDoc, doc, limitToLast, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
+import { deleteDoc, doc, limitToLast, updateDoc, arrayUnion } from 'firebase/firestore';
 import { query, collection, getFirestore, orderBy } from 'firebase/firestore';
 import VolumeSlider from '../Small-UI-components/VolumeSlider';
 import Queue from './Queue';
-import Loading from '../Small-UI-components/Loading';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { auth } from '../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
-
-const YouTube = lazy(()=> import('react-youtube'));
+import YouTube from 'react-youtube';
 
 
 const MusicWindow = () => {
@@ -79,17 +77,17 @@ updateDoc(doc(db,"queue",queue[0]?.id),{likes : arrayUnion(User.uid)   })
 
 } 
 
-console.log(User)
+
 
 
 
   return (
 
     <React.Fragment>
-<Suspense fallback={"Loading"} >
+
       <div className={styled['video-container']}>
 
-
+     
         <YouTube opts={opts}
           videoId={queue[0]?.videoid}
           onStateChange={playVideo}
@@ -98,7 +96,7 @@ console.log(User)
           onReady={limitDuration}
           
         />
-         
+              
         <div className={styled.volume}> <VolumeSlider setMusicVolume={setMusicVolume} />   </div>
 
 
@@ -106,7 +104,7 @@ console.log(User)
       {queue[0] ? (!like ? <FavoriteBorderIcon onClick={LikeHandler} style={{color: "white"}}/>   : <FavoriteIcon style={{color: "white"}} /> ) : ''}
                                      
 
-      {queue[0] ?  <p> <span style={{ color: "rgb(36, 180, 108)" }}> Now playing:    </span>  <span style={{ color: "rgb(223, 79, 245)", fontWeight: "bold" }}>{queue[0]?.displayName}</span>    <img src={queue[0]?.photoURL || `https://avatars.dicebear.com/api/initials/${queue[0]?.displayName}.svg` || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} alt={'error'} />  {queue[0]?.videotitle} </p> : ''}
+      {queue[0] ?  <p> <span style={{ color: "rgb(36, 180, 108)" }}> Now playing:    </span>    <img src={queue[0]?.photoURL || `https://avatars.dicebear.com/api/initials/${queue[0]?.displayName}.svg` || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} alt={'error'} /> <span style={{ color: "rgb(223, 79, 245)", fontWeight: "bold" }}>{queue[0]?.displayName}</span>  | {queue[0]?.videotitle} </p> : ''}
     
       </div>
 
@@ -117,7 +115,7 @@ console.log(User)
           {queue && queue.slice(1).map((data) => { return (<p key={data.videoid}>   <img src={data.photoURL || `https://avatars.dicebear.com/api/initials/${data?.displayName}.svg`} alt="error" /> {data.videotitle}  </p>) })}
         </Queue>
   
-        </Suspense>
+ 
     </React.Fragment>
   );
 };

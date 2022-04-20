@@ -46,7 +46,7 @@ const Sidebar = () => {
    videoTitle: '',
 
   }); 
-console.log(isMobile)
+
 
   const sidebar = useSpring({
     transform: SBcontext.SBvisible ? "translateX(50%)" : "translateX(-50%)",
@@ -120,11 +120,11 @@ setConfirmVideo((prev)=>{return{...prev,addVideo: false }});
 
 
 
-const addToQueue = async (displayName, photoURL, uid, videoid, videoTitle) =>{  
+const addToQueue = (displayName, photoURL, uid, videoid, videoTitle) =>{  
   
   try {
 
-    const docRef = await addDoc(queueRef, {
+    addDoc(queueRef, {
       videoid: videoid,
       videotitle: videoTitle,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -132,7 +132,7 @@ const addToQueue = async (displayName, photoURL, uid, videoid, videoTitle) =>{
       displayName,
       photoURL
     });
-    console.log("Document written with ID: ", docRef.id);
+   
   } catch (e) {
     console.error("Error adding document: ", e);
   }}
