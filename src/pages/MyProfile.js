@@ -5,7 +5,7 @@ import firebase from 'firebase/compat/app';
 import {useState} from 'react'; 
 import { onAuthStateChanged } from 'firebase/auth';
 import { updateProfile } from 'firebase/auth';
-
+import { motion } from 'framer-motion';
 
 
 
@@ -25,7 +25,19 @@ const MyProfile = () => {
 
   return (
     <Fragment> 
-    <div className={styled.page}> 
+    <motion.div className={styled.page}
+    initial={{opacity: 0}}
+    animate={{
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: [0.61, 1, 0.88, 1],
+      }
+    }}
+    exit={{opacity: 0,  transition: {duration: 0.7} }}
+    
+    
+    > 
 
      <div className={styled.panel}> 
   
@@ -58,7 +70,7 @@ const MyProfile = () => {
 
      </div>
      
-    </div>
+    </motion.div>
     
     </Fragment>
   )

@@ -17,7 +17,7 @@ const ChatMessage = (props) => {
   
     const { displayName, text, uid, photoURL, createdAt} = props.message;
     let messageClass = 'received'; 
-    let date = new Date(createdAt?.seconds * 1000).toUTCString(); // need to implement
+    /* let date = new Date(createdAt?.seconds * 1000).toUTCString();  */// need to implement
   
   
   

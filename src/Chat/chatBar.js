@@ -1,8 +1,6 @@
 import React, {lazy, Suspense } from 'react';
 import styled from './ChatBar.module.scss'
 import { useState, useEffect, useRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRocket } from '@fortawesome/free-solid-svg-icons';
 import { auth } from '../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
 import firebase from 'firebase/compat/app';
