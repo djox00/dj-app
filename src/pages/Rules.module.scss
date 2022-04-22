@@ -25,9 +25,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            box-shadow: inset 0 0 2000px rgba(63, 63, 63, 0.5);
-            filter: blur(10px);
-            margin: -20px;
+            box-shadow: inset 0 0 2000px rgba(161, 42, 161, 0.753);
+            filter: blur(15px);
+            margin: -5px;
           }
 
 
@@ -36,8 +36,11 @@
             font-family: 'Share Tech Mono', monospace;
             letter-spacing: -0.5px;
             li{
-              margin-top: 10px;
-              color: white;
+              font-size: 20px;
+              margin-top: 15px;
+              color: rgb(189, 189, 189);
+            
+              
             }
           }
         

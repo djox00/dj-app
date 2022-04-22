@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { useState, lazy, Suspense} from 'react';
 import styled from './MusicWindow.module.scss'
 import { useFirestoreQuery } from '../costumHooks/firebase-hooks';
 import { deleteDoc, doc, limitToLast, updateDoc, arrayUnion } from 'firebase/firestore';
@@ -9,10 +9,13 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { auth } from '../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
-import YouTube from 'react-youtube';
+import Loading from '../Small-UI-components/Loading';
+const YouTube = lazy(()=> import("react-youtube"))
 
 
 const MusicWindow = () => {
+
+
 
 const [User, setUser] = useState(''); 
 onAuthStateChanged(auth,(currentUser)=>{
@@ -87,7 +90,8 @@ updateDoc(doc(db,"queue",queue[0]?.id),{likes : arrayUnion(User.uid)   })
 
       <div className={styled['video-container']}>
 
-     
+         
+       <Suspense fallback={<Loading />}> 
         <YouTube opts={opts}
           videoId={queue[0]?.videoid}
           onStateChange={playVideo}
@@ -96,6 +100,7 @@ updateDoc(doc(db,"queue",queue[0]?.id),{likes : arrayUnion(User.uid)   })
           onReady={limitDuration}
           
         />
+        </Suspense>  
               
         <div className={styled.volume}> <VolumeSlider setMusicVolume={setMusicVolume} />   </div>
 

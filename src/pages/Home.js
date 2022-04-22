@@ -1,6 +1,5 @@
-import React, {lazy, Suspense, useContext, useEffect} from 'react';
+import React, { useContext, lazy, Suspense} from 'react';
 import styled from './Home.module.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import ChatBar from '../Chat/chatBar';
 import MusicWindow from '../Music/MusicWindow';
 import {  Row, Col } from 'react-bootstrap';
@@ -8,39 +7,46 @@ import { auth } from '../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useState } from 'react';
 import Stars from '../Small-UI-components/Stars';
-import Loading from '../Small-UI-components/Loading';
-import Sidebar from '../Music/Sidebar'
-import SideBarToggleContext from '../StateProviders/siderbar-toggle';
-
+import { motion } from 'framer-motion';
+import Loading from '../Small-UI-components/Loading'
+const Sidebar = lazy(()=> import("../Music/Sidebar"))
 
 
 const Home = () => {
   
 
-  const SBcontext = useContext(SideBarToggleContext); 
+
 
   const [User, setUser] = useState(''); 
   onAuthStateChanged(auth,(currentUser)=>{ 
     setUser(currentUser); 
   })
 
-if(SBcontext.SBvisible){
-  document.body.style.overflow = 'hidden';   
-}
-if(!SBcontext.SBvisible){
-  document.body.style.overflow = 'auto';
-}
 
-  
+ 
   return (
     <React.Fragment>  
+      
+      <motion.div
+      initial={{opacity: 0}}
+      animate={{
+        opacity: 1,
+        transition: {
+          duration: 0.6,
+          ease: [0.61, 1, 0.88, 1],
+        }
+      }}
+      exit={{opacity: 0,  transition: {duration: 0.7} }}
+      
+      >    
 
-
-     {User!=null ? <Sidebar   />  : '' } 
-    {/*  {User!=null ? <Suspense fallback={<Loading>Loading...</Loading>}> <Sidebar   />   </Suspense> : '' }   pravi bug tj prikazuje prazan div umjesto load elementa */}
+    
+     {User!=null ? <Suspense fallback={<Loading />}> <Sidebar   />   </Suspense> : '' }  
     <div className={styled.page} >
    <Stars /> 
      
+  
+
      <div className={styled.music}>
    
    <Row className={styled.content}>     
@@ -54,7 +60,7 @@ if(!SBcontext.SBvisible){
     </div>
 
    
-   
+    </motion.div>
     </React.Fragment>
   )
 }

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { createUserWithEmailAndPassword, onAuthStateChanged,signInWithEmailAndPassword, GoogleAuthProvider,  signInWithRedirect, setPersistence, browserLocalPersistence } from 'firebase/auth'
+import { createUserWithEmailAndPassword, onAuthStateChanged,signInWithEmailAndPassword, GoogleAuthProvider, getRedirectResult,  signInWithRedirect, setPersistence, browserLocalPersistence } from 'firebase/auth'
 import { auth } from '../firebase-config'
 import { useState} from 'react'
 import styled from './Login.module.scss';
@@ -8,7 +8,7 @@ import RegisterForm from '../UI/RegisterForm';
 import Error from '../UI/Error';
 import { useNavigate } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
-
+import { motion } from 'framer-motion';
 
 
 
@@ -32,7 +32,7 @@ const Login = () => {
   onAuthStateChanged(auth, (currentUser) => { setUser(currentUser); })
   const navigate = useNavigate();
 
-  /* if(auth.currentUser!=null){ navigate("/Home");} */
+  if(auth.currentUser!=null){ navigate("/Home");} 
 
 
 
@@ -99,7 +99,7 @@ const Login = () => {
 
         setErrorStatus(false);          // removes error if its active 
         console.log(user);
-        navigate("/Home");
+      
         // ...
       }).catch((error) => {
         // Handle Errors here.
@@ -118,22 +118,30 @@ const Login = () => {
   return (
 
 
-    <Fragment>
 
-      <div className={styled.page}>
+      <motion.div className={styled.page}
+      
+      initial={{opacity: 0}}
+      animate={{
+        opacity: 1,
+        transition: {
+          duration: 0.5,
+          ease: [0.61, 1, 0.88, 1],
+        }
+      }}
+     
+     
+      >
         {ErrorStatus ? <Error>{errorMessage}</Error> : ''}
         <div className={styled.authentication}>
           {displayLogin ?
             <LoginForm  flogin={login} fLoginWithGoogle={LoginWithGoogle} displayLogin={setdisplayLogin} /> :
             <RegisterForm fregister={register} displayLogin={setdisplayLogin} />}
 
-
-
-
         </div>
-      </div>
+      </motion.div>
 
-    </Fragment>
+    
   )
 }
 

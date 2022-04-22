@@ -23,9 +23,12 @@ const API_KEY = 'AIzaSyAaJqC70Z5FvaOtwtKvHc_RJ5hh86fa6dQ';
 const Sidebar = () => {
 
 
-  const [isMobile, setIsMobile] = useState(false)
+
  
   
+
+
+  const [isMobile, setIsMobile] = useState(false)
   const handleResize = () => {
     if (window.innerWidth < 720) {
         setIsMobile(true)
@@ -46,6 +49,15 @@ const Sidebar = () => {
    videoTitle: '',
 
   }); 
+
+
+  if(SBcontext.SBvisible){
+    document.body.style.overflow = 'hidden';   
+  }
+  if(!SBcontext.SBvisible){
+    document.body.style.overflow = 'auto';
+  }
+
 
 
   const sidebar = useSpring({
