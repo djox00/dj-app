@@ -17,6 +17,7 @@ console.log(User);
 
 const logout = async () =>{ 
   await signOut(auth); 
+  window.sessionStorage.clear(); 
 }
 
 const SignUp = () =>{

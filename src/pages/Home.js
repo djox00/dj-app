@@ -14,7 +14,7 @@ const Sidebar = lazy(()=> import("../Music/Sidebar"))
 
 const Home = () => {
   
-
+console.log(window.sessionStorage.getItem("admin")); 
 
 
   const [User, setUser] = useState(''); 
