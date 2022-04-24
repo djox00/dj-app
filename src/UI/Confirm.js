@@ -5,11 +5,14 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { useSpring, animated } from 'react-spring'
 
 
+
+
 const Confirm = (props) => {
 
+ 
 
     const popup = useSpring({
-        visibility: props.ConfirmVideo.boxVisible ? "visible" : "hidden",
+        visibility: props.ConfirmVideo.boxVisible  ? "visible" : "hidden",
         config: { duration: 0 }
       });
 

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { createUserWithEmailAndPassword, onAuthStateChanged,signInWithEmailAndPassword, GoogleAuthProvider, getRedirectResult,  signInWithRedirect, setPersistence, browserLocalPersistence } from 'firebase/auth'
+import { createUserWithEmailAndPassword, onAuthStateChanged,signInWithEmailAndPassword, getRedirectResult, GoogleAuthProvider, signInWithRedirect, setPersistence, browserLocalPersistence, signInWithPopup } from 'firebase/auth'
 import { auth } from '../firebase-config'
 import { useState} from 'react'
 import styled from './Login.module.scss';
@@ -9,7 +9,8 @@ import Error from '../UI/Error';
 import { useNavigate } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
 import { motion } from 'framer-motion';
-
+import { getFirestore, collection, query, orderBy, limitToLast } from 'firebase/firestore';
+import { useFirestoreQuery } from '../costumHooks/firebase-hooks';
 
 
 
@@ -23,17 +24,33 @@ const Login = () => {
   
 
 
-  const [User, setUser] = useState({});
+ 
 
+  const [User, setUser] = useState({});
   // display the user form by default 
   const [displayLogin, setdisplayLogin] = useState(true);
 
   // react to the user that is logged in 
   onAuthStateChanged(auth, (currentUser) => { setUser(currentUser); })
+
+
+
+  const db = getFirestore(); 
+  const adminsRef = collection(db,"administrators"); 
+  const q = query(adminsRef); 
+  const admins = useFirestoreQuery(q);
   const navigate = useNavigate();
 
-  if(auth.currentUser!=null){ navigate("/Home");} 
+  const setAdmin =  () =>{    
 
+     if( admins.filter((admin)=> admin.user == User?.uid).length == 0){
+           window.sessionStorage.setItem("admin",false); 
+        navigate("/Home")
+     } else {
+      window.sessionStorage.setItem("admin",true); 
+       navigate("/Home")
+     }
+    }
 
 
   // if status is true the errorMessage will be displayed  
@@ -42,9 +59,11 @@ const Login = () => {
   // executes when the user hits register  
   const register = async (name, e, p, c) => {
 
+
+
     if (p === c) {
       try {
-        await setPersistence(auth,browserLocalPersistence);
+        
         const user = await createUserWithEmailAndPassword(auth, e, p);
         updateProfile(auth.currentUser, { displayName: name });
         console.log(auth.currentUser);
@@ -71,9 +90,16 @@ const Login = () => {
 
 
     try {
+      
       const user = await signInWithEmailAndPassword(auth, e, p);
       setErrorStatus(false);
-      navigate("/Home");
+      setAdmin(); 
+     
+
+     if(user){
+
+     }
+
 
     } catch (error) {
       setErrorStatus(true);    // displays the error box 
@@ -87,30 +113,29 @@ const Login = () => {
 
 
 
-  const LoginWithGoogle = () => {
+  const LoginWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-    signInWithRedirect (auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
+    try {
+     
+   
+      const result = await signInWithPopup (auth, provider); 
         const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
+        setErrorStatus(false); 
+        
+     
+     
+      setAdmin(); 
+     
 
-        setErrorStatus(false);          // removes error if its active 
-        console.log(user);
-      
-        // ...
-      }).catch((error) => {
-        // Handle Errors here.
-        setErrorStatus(true);    // displays the error box 
-        seterrorMessage(error.message);  // sets the message 
-        // The email of the user's account used.
-        const email = error.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-      });
+    } catch (error) {
+      setErrorStatus(true);    // displays the error box 
+      seterrorMessage(error.message);  // sets the message 
+      // The email of the user's account used.
+      const email = error.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    }
+        
   }
 
 
