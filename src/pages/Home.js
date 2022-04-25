@@ -4,26 +4,21 @@ import ChatBar from '../Chat/chatBar';
 import MusicWindow from '../Music/MusicWindow';
 import {  Row, Col } from 'react-bootstrap';
 import { auth } from '../firebase-config';
-import { onAuthStateChanged } from 'firebase/auth';
-import { useState } from 'react';
 import Stars from '../Small-UI-components/Stars';
 import { motion } from 'framer-motion';
 import Loading from '../Small-UI-components/Loading'
+import ToggleContext from '../StateProviders/siderbar-toggle';
 const Sidebar = lazy(()=> import("../Music/Sidebar"))
 
 
 const Home = () => {
   
-console.log(window.sessionStorage.getItem("admin")); 
+  const starsContext = useContext(ToggleContext); 
+
+    console.log(starsContext.stars)
 
 
-  const [User, setUser] = useState(''); 
-  onAuthStateChanged(auth,(currentUser)=>{ 
-    setUser(currentUser); 
-  })
 
-
- 
   return (
     <React.Fragment>  
       
@@ -41,9 +36,9 @@ console.log(window.sessionStorage.getItem("admin"));
       >    
 
     
-     {User!=null ? <Suspense fallback={<Loading />}> <Sidebar   />   </Suspense> : '' }  
+     {auth.currentUser!=null ? <Suspense fallback={<Loading />}> <Sidebar   />   </Suspense> : '' }  
     <div className={styled.page} >
-   <Stars /> 
+   {starsContext.stars ?  <Stars /> : ''} 
      
   
 

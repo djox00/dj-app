@@ -8,7 +8,7 @@ import AudiotrackOutlinedIcon from '@mui/icons-material/AudiotrackOutlined';
 import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
 import SettingsIcon from '@mui/icons-material/Settings';
-
+import StarsToggle from '../Small-UI-components/StarsToggle';
 
 
 const Footer = (props) => {
@@ -73,7 +73,7 @@ useEffect(() => {
        label="Folder"
         value="folder"
         className={styled.action}
-         icon={<SettingsIcon className={styled.icon} />} /> 
+         icon={<StarsToggle />} /> 
     </BottomNavigation>
 
 

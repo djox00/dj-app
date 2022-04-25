@@ -9,7 +9,6 @@ import {
   import Landing from '../pages/Landing';
   import Login from '../pages/Login';
   import MyProfile from '../pages/MyProfile';
-  import { SideBarContextProvider } from '../StateProviders/siderbar-toggle';
   import { AnimatePresence } from 'framer-motion';
 
 
@@ -23,7 +22,7 @@ const AnimatedRoutes = () => {
   return (
   <AnimatePresence>   
     <Routes location={location} key={location.pathname}>
-    <Route path="/Home" element={<SideBarContextProvider> <Home/> </SideBarContextProvider> }/>
+    <Route path="/Home" element={ <Home/> }/>
     <Route path="/Login" element={ <Login/> } />
     <Route path="/MyProfile" element={ <MyProfile />} />
     <Route path="/Rules" element={ <Rules/> } />

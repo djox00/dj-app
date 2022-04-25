@@ -1,4 +1,4 @@
-import React, {useState, Fragment, useEffect} from 'react'
+import React, {useState, Fragment} from 'react'
 import Box from '@mui/material/Box';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import styled from './Emojis.module.scss'
@@ -18,11 +18,6 @@ const EmojisContainer = (props) => {
       const handleClickAway = () => {
         setOpen(false);
       };
-
-
-    
-
-
 
   return (
     <Fragment>

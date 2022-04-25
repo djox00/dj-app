@@ -13,7 +13,6 @@ const [User, setUser] = useState('');
 
   onAuthStateChanged(auth,(currentUser)=>{ setUser(currentUser); })
 
-console.log(User); 
 
 const logout = async () =>{ 
   await signOut(auth); 

@@ -106,8 +106,10 @@ const Sidebar = () => {
   onAuthStateChanged(auth,(currentUser)=>{ 
     setUser(currentUser); 
   })
+if(User!=null){
+  var {displayName, photoURL, uid} = User;
+ }
 
-const {displayName, photoURL, uid} = User;
 
 
 

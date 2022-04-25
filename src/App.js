@@ -8,12 +8,14 @@ import {
 import Footer from './UI/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AnimatedRoutes from './Small-UI-components/AnimatedRoutes';
+import {ToggleContextProvider} from './StateProviders/siderbar-toggle'
 
 function App() {
 
 
   return (
     <Fragment>
+      <ToggleContextProvider> 
     <div className={styled.page}>      
     <Router >
            <NavBar/> 
@@ -23,6 +25,7 @@ function App() {
   
    <footer> <Footer/></footer>
    </div>   
+   </ToggleContextProvider>
    </Fragment>
   );
 }

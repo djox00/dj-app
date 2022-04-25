@@ -1,10 +1,13 @@
 import React, { Fragment } from 'react'
-import {Nav} from 'react-bootstrap'
 import styled from './Badge.module.scss'
 
 //https://ba.linkedin.com/in/djordje-djuric?trk=profile-badge
 
 const Badge = () => {
+
+
+
+
   return (
     <Fragment> 
        <div className={styled['badge-container']}> 
