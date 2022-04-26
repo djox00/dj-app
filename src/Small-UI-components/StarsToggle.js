@@ -2,11 +2,11 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import Fade from '@mui/material/Fade';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import SettingsIcon from '@mui/icons-material/Settings';
 import Switch from '@mui/material/Switch';
 import ToggleContext from '../StateProviders/siderbar-toggle';
-
+import styled from './StarsToggle.module.scss'
 
 
 const StarsToggle = () => {
@@ -24,25 +24,20 @@ const StarsToggle = () => {
   };
 
 
-const iconStyle ={
-color: "white",
-transform: window.innerWidth>615 ?  "scale(1.2)" : "scale(1)"
-
-}
-
-
 
   return (
     <div>
-      <Button
+      <div className={styled.container}>
+      <Button style={{marginTop: -11, marginRight: 10}}
         id="fade-button"
         aria-controls={open ? 'fade-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        
       >
-        <SettingsIcon style={iconStyle} />
-      </Button>
+        <SettingsIcon className={styled.icon} />
+      </Button></div>
       
       <Menu
         id="fade-menu"

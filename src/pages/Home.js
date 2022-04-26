@@ -15,7 +15,7 @@ const Home = () => {
   
   const starsContext = useContext(ToggleContext); 
 
-    console.log(starsContext.stars)
+    
 
 
 

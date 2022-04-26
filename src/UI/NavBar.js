@@ -39,7 +39,7 @@ return('');
  
   <div className={styled['dj-room']}>   <Navbar.Brand href='Home' ><AudiotrackOutlinedIcon style={{color: "rgba(41, 145, 113, 0.823)", transform: "scale(1.2)"}} /> Music Room</Navbar.Brand></div>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{border : "none", boxShadow : "none"}} />
-  <Navbar.Collapse id="responsive-navbar-nav" c={true}>
+  <Navbar.Collapse id="responsive-navbar-nav" c="true">
     <Nav style={{marginLeft: "20px"}} >
       <Nav.Link href="Rules">Rules</Nav.Link>
       <Nav.Link href="Info">Info</Nav.Link>
