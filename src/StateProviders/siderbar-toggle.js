@@ -1,22 +1,37 @@
 import React from "react";
 import { useState } from "react";
 
-const SideBarToggleContext = React.createContext({
+const ToggleContext = React.createContext({
     SBvisible: false,
-    SBtoggle: () => {}
+    SBtoggle: () => {},
+    stars: true,
+    toggleStars: () =>{}
     
 })
 
-export const SideBarContextProvider = (props) =>{ 
+export const ToggleContextProvider = (props) =>{ 
 
 const [sideBarVisible, setsideBarVisible] = useState(false); 
+
+const [starsVisible, setstarsVisible] = useState(true); 
 
 
 const toggleHandler = () =>{
     setsideBarVisible((status)=>!status); 
 }
+const starsHandler = () =>{
+    setstarsVisible((status)=>!status); 
+}
 
-return( <SideBarToggleContext.Provider value={{SBvisible: sideBarVisible, SBtoggle : toggleHandler   }} > {props.children}</SideBarToggleContext.Provider>)
+
+return( <ToggleContext.Provider 
+value={{
+    SBvisible: sideBarVisible, 
+    SBtoggle : toggleHandler,
+    stars : starsVisible,
+     toggleStars : starsHandler, 
+     
+    }} > {props.children}</ToggleContext.Provider>)
 
 }
-export default SideBarToggleContext; 
+export default ToggleContext; 

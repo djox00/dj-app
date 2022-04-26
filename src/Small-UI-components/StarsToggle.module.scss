@@ -1,0 +1,15 @@
+.icon{
+    color: rgb(105, 105, 105);
+    transform: scale(1.2);
+
+    @media screen and (max-width: 615px) {
+         &{
+           transform: scale(1); 
+        }
+      }
+}
+.container{
+    max-width: 168px;
+    min-width: 80px;
+
+}

@@ -83,4 +83,19 @@
 .volume{
     width: 100%;
     
+
+.foward{
+    background-color: rgba(71, 71, 71, 0.095);
+    padding: 5px;
+    border-radius: 2px;
+    position: absolute;
+    color: #9413bb;
+    margin-top: 18px;
+    margin-left: 15%;
+    transform: scale(1.7);
+    &:hover{
+        cursor: pointer;
+    }
+}
+
 }

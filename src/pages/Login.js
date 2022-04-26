@@ -9,7 +9,7 @@ import Error from '../UI/Error';
 import { useNavigate } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
 import { motion } from 'framer-motion';
-import { getFirestore, collection, query, orderBy, limitToLast } from 'firebase/firestore';
+import { getFirestore, collection, query } from 'firebase/firestore';
 import { useFirestoreQuery } from '../costumHooks/firebase-hooks';
 
 
@@ -20,20 +20,9 @@ import { useFirestoreQuery } from '../costumHooks/firebase-hooks';
 
 
 const Login = () => {
-
   
-
-
- 
-
-  const [User, setUser] = useState({});
   // display the user form by default 
   const [displayLogin, setdisplayLogin] = useState(true);
-
-  // react to the user that is logged in 
-  onAuthStateChanged(auth, (currentUser) => { setUser(currentUser); })
-
-
 
   const db = getFirestore(); 
   const adminsRef = collection(db,"administrators"); 
@@ -41,13 +30,14 @@ const Login = () => {
   const admins = useFirestoreQuery(q);
   const navigate = useNavigate();
 
+
   const setAdmin =  () =>{    
 
-     if( admins.filter((admin)=> admin.user == User?.uid).length == 0){
-           window.sessionStorage.setItem("admin",false); 
+     if(admins.filter((admin)=> admin.user === auth.currentUser.uid).length){
+           window.sessionStorage.setItem("admin",true); 
         navigate("/Home")
      } else {
-      window.sessionStorage.setItem("admin",true); 
+      window.sessionStorage.setItem("admin",false); 
        navigate("/Home")
      }
     }
@@ -59,12 +49,10 @@ const Login = () => {
   // executes when the user hits register  
   const register = async (name, e, p, c) => {
 
-
-
     if (p === c) {
       try {
         
-        const user = await createUserWithEmailAndPassword(auth, e, p);
+        await createUserWithEmailAndPassword(auth, e, p);
         updateProfile(auth.currentUser, { displayName: name });
         console.log(auth.currentUser);
         setErrorStatus(false);
@@ -100,15 +88,11 @@ const Login = () => {
 
      }
 
-
     } catch (error) {
       setErrorStatus(true);    // displays the error box 
       seterrorMessage(error);  // sets the message 
 
     }
-
-
-
   }
 
 
@@ -117,28 +101,19 @@ const Login = () => {
     const provider = new GoogleAuthProvider();
     try {
      
-   
       const result = await signInWithPopup (auth, provider); 
-        const credential = GoogleAuthProvider.credentialFromResult(result);
+       GoogleAuthProvider.credentialFromResult(result);
         setErrorStatus(false); 
-        
-     
-     
-      setAdmin(); 
+         setAdmin(); 
      
 
     } catch (error) {
       setErrorStatus(true);    // displays the error box 
       seterrorMessage(error.message);  // sets the message 
-      // The email of the user's account used.
-      const email = error.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
+      GoogleAuthProvider.credentialFromError(error);
     }
         
   }
-
-
 
   return (
 

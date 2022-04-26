@@ -4,15 +4,11 @@ import { onAuthStateChanged } from 'firebase/auth';
 import styled from './ChatMessage.module.scss';
 const ChatMessage = (props) => {
 
-
-
     const [User, setUser] = useState(''); 
     onAuthStateChanged(auth,(currentUser)=>{ 
       setUser(currentUser); 
     })
   
-
-
 
   
     const { displayName, text, uid, photoURL, createdAt} = props.message;
@@ -27,7 +23,7 @@ const ChatMessage = (props) => {
   
     return (<>
       {(displayName && messageClass!=='sent')? (
-              <div className={styled.displayName} >{displayName } </div>
+              <div className={styled.displayName} >{displayName}  </div>
             ) : null}
       <div className={`${styled.message} ${styled[messageClass]} `}>
         
