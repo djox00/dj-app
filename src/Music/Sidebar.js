@@ -24,10 +24,6 @@ const Sidebar = () => {
 
 
 
- 
-  
-
-
   const [isMobile, setIsMobile] = useState(false)
   const handleResize = () => {
     if (window.innerWidth < 720) {
@@ -86,10 +82,7 @@ const Sidebar = () => {
   }
 
 
-
   let videoList = videos.map((video) => { return <Video key={video.etag} setConfirmVideo={setConfirmVideo}  setclickedVideo={setclickedVideo} videoID={video.id.videoId} /> });
-
-
 
 
   const UserInput = useRef();
@@ -155,18 +148,16 @@ const addToQueue = (displayName, photoURL, uid, videoid, videoTitle) =>{
 
 
 
-
-
-
-
   return (
 
     <React.Fragment>
 
-      {ReactDOM.createPortal(<animated.div style={backdrop} >
+      {ReactDOM.createPortal(
+      <animated.div style={backdrop} >
 <div className={styled.backdrop} > 
         <animated.div style={sidebar} >
             <div className={styled.sidebar}>
+
             <Confirm value="add" ConfirmVideo={ConfirmVideo}  setConfirmVideo={setConfirmVideo}> Do you want to add this video to the play queue? </Confirm>
               <div className={styled.close}><FontAwesomeIcon onClick={SBcontext.SBtoggle} className={styled['close-button']} icon={faXmark} /></div>
               <div className={styled['search-field']}>   <input type="text" ref={UserInput} onKeyUp={onKeyPressHandler} /> <FontAwesomeIcon className={styled['search-icon']} icon={faSearch} onClick={onKeyPressHandler} /></div>

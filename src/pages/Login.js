@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { createUserWithEmailAndPassword, onAuthStateChanged,signInWithEmailAndPassword, getRedirectResult, GoogleAuthProvider, signInWithRedirect, setPersistence, browserLocalPersistence, signInWithPopup } from 'firebase/auth'
+import { createUserWithEmailAndPassword, onAuthStateChanged,signInWithEmailAndPassword, getRedirectResult, GoogleAuthProvider, signInWithRedirect, setPersistence, browserLocalPersistence, signInWithPopup, browserSessionPersistence } from 'firebase/auth'
 import { auth } from '../firebase-config'
 import { useState} from 'react'
 import styled from './Login.module.scss';
@@ -78,15 +78,11 @@ const Login = () => {
 
 
     try {
-      
+      await  setPersistence(auth,browserSessionPersistence); 
       const user = await signInWithEmailAndPassword(auth, e, p);
       setErrorStatus(false);
       setAdmin(); 
-     
-
-     if(user){
-
-     }
+    
 
     } catch (error) {
       setErrorStatus(true);    // displays the error box 
@@ -100,7 +96,7 @@ const Login = () => {
   const LoginWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
     try {
-     
+      await  setPersistence(auth,browserSessionPersistence); 
       const result = await signInWithPopup (auth, provider); 
        GoogleAuthProvider.credentialFromResult(result);
         setErrorStatus(false); 

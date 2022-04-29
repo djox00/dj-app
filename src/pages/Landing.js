@@ -31,7 +31,7 @@ a();
         
         <h1>Welcome to <span style={{color: "rgb(180, 64, 200)" }}> AstroDj!</span></h1>    
 
-        <h2><span style={{color: "rgb(180, 64, 200)" }}>AstroDj </span> is designed and created with: </h2>   
+        <h2>This site is designed and created with: </h2>   
          
          <img src={reactfirebase} alt="Firebase" />
          <div className={styled.components}>  
