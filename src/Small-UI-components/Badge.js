@@ -17,7 +17,7 @@ const Badge = () => {
        <p>Djordje Djuric</p>
 
 
-       <a href={"https://github.com/djox00"}> 
+       <a href={"https://github.com/djox00" } target="_blank"> 
        <div className={styled.badge}>   
             <img src={"https://cdn-icons-png.flaticon.com/512/25/25231.png?w=360"} alt="github" />
            <p>github.com/djox00</p>
@@ -25,7 +25,7 @@ const Badge = () => {
          </a>
 
 
-         <a href={"https://www.linkedin.com/in/djordje-djuric/"}> 
+         <a href={"https://www.linkedin.com/in/djordje-djuric/"} target="_blank"> 
          <div className={styled.badge}>   
          <img src={"https://www.mhe-sme.org/wp-content/uploads/2017/12/linkedin-icon.png"} alt="linkedin" />
          <p>in/djordje-djuric</p>

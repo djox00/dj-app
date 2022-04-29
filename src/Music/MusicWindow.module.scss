@@ -96,6 +96,12 @@
     &:hover{
         cursor: pointer;
     }
+    @media only screen and (max-width: 370px) {
+        & {
+            margin-left: 5%;
+        }
+      }
 }
+
 
 }
