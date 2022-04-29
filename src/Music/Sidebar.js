@@ -33,7 +33,7 @@ const Sidebar = () => {
     }
   }
   
-  console.log("blabla")
+  
   useEffect(() => {
     window.addEventListener("resize", handleResize)
   })
