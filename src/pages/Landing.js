@@ -40,9 +40,9 @@ a();
          <img src=" https://mui.com/static/logo.png" alt="mui" />                 
          <img src="https://camo.githubusercontent.com/84746920d1a9906680c387b3cc8753ee842e996fc8915abd295011e15b594b74/68747470733a2f2f676574626f6f7473747261702e636f6d2f646f63732f352e312f6173736574732f6272616e642f626f6f7473747261702d6c6f676f2d736861646f772e706e67" alt="bootstrap" />  
          <img src="https://i.pinimg.com/originals/83/03/cd/8303cd6c946f9b0040ade2c6c981157a.jpg"   alt="youtube api" /> 
-        
+         <img src=" https://w7.pngwing.com/pngs/887/757/png-transparent-framer-logos-brands-icon.png" alt="Framer" />   
 
-         
+        
 
          </div>
          <h3>Project created by: </h3> 

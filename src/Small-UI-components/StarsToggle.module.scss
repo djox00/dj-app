@@ -1,5 +1,5 @@
 .icon{
-    color: rgb(105, 105, 105);
+    color: rgb(27, 131, 100);
     transform: scale(1.2);
 
     @media screen and (max-width: 615px) {
@@ -12,4 +12,8 @@
     max-width: 168px;
     min-width: 80px;
 
+}
+body::-webkit-scrollbar-track {
+  background: rgb(33, 37, 41);
+  
 }
