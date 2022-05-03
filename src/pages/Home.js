@@ -8,15 +8,22 @@ import Stars from '../Small-UI-components/Stars';
 import { motion } from 'framer-motion';
 import Loading from '../Small-UI-components/Loading'
 import ToggleContext from '../StateProviders/siderbar-toggle';
+import { ref, getDatabase, refFromURL, serverTimestamp, onValue, query } from 'firebase/database'
+import { database } from '../firebase-config';
+
 const Sidebar = lazy(()=> import("../Music/Sidebar"))
+
+
+
+
 
 
 const Home = () => {
   
   const starsContext = useContext(ToggleContext); 
 
-    
 
+  
 
 
   return (

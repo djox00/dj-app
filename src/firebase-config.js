@@ -1,15 +1,18 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"; 
+import { getDatabase } from "firebase/database";
+
+
 const firebaseConfig = {
-    apiKey: "AIzaSyAaJqC70Z5FvaOtwtKvHc_RJ5hh86fa6dQ",
-    authDomain: "dj-app-342722.firebaseapp.com",
-    projectId: "dj-app-342722",
-    storageBucket: "dj-app-342722.appspot.com",
-    messagingSenderId: "724508147686",
-    appId: "1:724508147686:web:768f547051ea6216996027",
-    measurementId: "G-1WG6GDZ69K"
-  };
-
+  apiKey: "AIzaSyCJycRR4xscscDM7BxxpDRhsG8Hj9141Fk",
+  authDomain: "astrodj-34801.firebaseapp.com",
+  databaseURL: "https://astrodj-34801-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "astrodj-34801",
+  storageBucket: "astrodj-34801.appspot.com",
+  messagingSenderId: "754213871767",
+  appId: "1:754213871767:web:96fa5c83757fc136f609d2",
+  measurementId: "G-CVEMXRYHJB"
+};
   const app = initializeApp(firebaseConfig); 
-
+export const database = getDatabase(app); 
   export const auth = getAuth(app); 

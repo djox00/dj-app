@@ -6,8 +6,8 @@ import { useState, useContext } from 'react';
 import SettingsIcon from '@mui/icons-material/Settings';
 import Switch from '@mui/material/Switch';
 import ToggleContext from '../StateProviders/siderbar-toggle';
-import styled from './StarsToggle.module.scss'
-
+import styledClass from './StarsToggle.module.scss'
+import { alpha, styled } from '@mui/material/styles';
 
 const StarsToggle = () => {
 
@@ -23,11 +23,24 @@ const StarsToggle = () => {
     setAnchorEl(null);
   };
 
+  const StarsSwitch = styled(Switch)(({ theme }) => ({
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      color: "rgb(33, 37, 41)",
+      '&:hover': {
+        backgroundColor: alpha("rgb(33, 37, 41)", theme.palette.action.hoverOpacity),
+      },
+    },
+    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+      backgroundColor: "rgb(33, 37, 41)",
+    },
+    
+  }));
+
 
 
   return (
     <div>
-      <div className={styled.container}>
+      <div className={styledClass.container}>
       <Button style={{marginTop: -11, marginRight: 10}}
         id="fade-button"
         aria-controls={open ? 'fade-menu' : undefined}
@@ -36,26 +49,29 @@ const StarsToggle = () => {
         onClick={handleClick}
         
       >
-        <SettingsIcon className={styled.icon} />
+        <SettingsIcon className={styledClass.icon} />
       </Button></div>
       
       <Menu
         id="fade-menu"
-        MenuListProps={{
-          'aria-labelledby': 'fade-button',
-        }}
-      
+        MenuListProps={{'aria-labelledby': 'fade-button',}}
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
         TransitionComponent={Fade}
-      >
+        PaperProps={{style:{
+          backgroundColor: "rgb(27, 131, 100)"
+        }}}
+      > 
         
-        <Switch 
+        <StarsSwitch 
       checked={toggleContext.stars}
       onChange={toggleContext.toggleStars}
       inputProps={{ 'aria-label': 'controlled' }}
-    /> <p style={{padding : "0px 10px", display: "inline"}}>Stars</p>
+      style={{color: "rgb(33, 37, 41)"}}
+      
+      
+    /> <p style={{padding : "0px 10px", display: "inline", color: "white"}}>Stars</p>
        
       </Menu>
     </div>
