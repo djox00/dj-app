@@ -10,13 +10,7 @@ import Loading from '../Small-UI-components/Loading'
 import { ref, getDatabase, refFromURL, serverTimestamp, onValue, query, onDisconnect, set } from 'firebase/database'
 import { database } from '../firebase-config';
 import { useSelector } from 'react-redux';
-
-
-
-const Sidebar = lazy(()=> import("../Music/Sidebar"))
-
-
-
+import Sidebar from "../Music/Sidebar"
 
 
 
@@ -43,7 +37,7 @@ const Home = () => {
 
 
     
-     {auth.currentUser!=null ? <Suspense fallback={<Loading />}> <Sidebar   />   </Suspense> : '' }  
+       <Sidebar   /> 
     <div className={styled.page} >
    {StarsVisible ?  <Stars /> : ''} 
      

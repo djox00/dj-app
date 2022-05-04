@@ -5,9 +5,7 @@ const StarsReducer = (state = true, action) =>{
              return !state; 
     
              default: 
-             return true; 
-    
+             return state; 
     }
-    
     }
     export default StarsReducer

@@ -1,14 +1,11 @@
 const SidebarReducer = (state = false, action) =>{
 
 switch(action.type){
-case 'SIDEBAR_OPEN': 
-         return !state; 
-
-case 'SIDEBAR_CLOSE': 
+case 'SIDEBAR_TOGGLE': 
          return !state; 
 
          default: 
-             return false; 
+             return state; 
 
 }
 

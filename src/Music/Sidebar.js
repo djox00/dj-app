@@ -14,7 +14,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import Confirm from '../UI/Confirm'
 import ReactDOM from 'react-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { SidebarHidden } from '../redux/actions/SidebarToggleAction'
+import { SidebarVisibleAction } from '../redux/actions/SidebarToggleAction'
 
 
 
@@ -24,7 +24,7 @@ const Sidebar = () => {
 
   const dispatch = useDispatch(); 
   const SidebarVisible = useSelector(state=>state.SidebarReducer); 
-
+console.log(SidebarVisible)
 
   const [isMobile, setIsMobile] = useState(false)
   const handleResize = () => {
@@ -160,7 +160,7 @@ const addToQueue = (displayName, photoURL, uid, videoid, videoTitle) =>{
             <div className={styled.sidebar}>
 
             <Confirm value="add" ConfirmVideo={ConfirmVideo}  setConfirmVideo={setConfirmVideo}> Do you want to add this video to the play queue? </Confirm>
-              <div className={styled.close}><FontAwesomeIcon onClick={()=>dispatch(SidebarHidden())} className={styled['close-button']} icon={faXmark} /></div>
+              <div className={styled.close}><FontAwesomeIcon onClick={()=>dispatch(SidebarVisibleAction())} className={styled['close-button']} icon={faXmark} /></div>
               <div className={styled['search-field']}>   <input type="text" ref={UserInput} onKeyUp={onKeyPressHandler} /> <FontAwesomeIcon className={styled['search-icon']} icon={faSearch} onClick={onKeyPressHandler} /></div>
               <div className={styled['search-result']}>{videoList ? videoList : ''} </div>
             </div>

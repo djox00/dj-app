@@ -1,10 +1,5 @@
-export  const SidebarVisible = () =>{
+export  const SidebarVisibleAction = () =>{
     return {
-        type: 'SIDEBAR_OPEN'
-    }
-}
-export const SidebarHidden = () =>{
-    return {
-        type: 'SIDEBAR_CLOSE'
+        type: 'SIDEBAR_TOGGLE'
     }
 }
