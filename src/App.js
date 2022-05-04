@@ -8,14 +8,16 @@ import {
 import Footer from './UI/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AnimatedRoutes from './Small-UI-components/AnimatedRoutes';
-import {ToggleContextProvider} from './StateProviders/siderbar-toggle'
+import { myStore } from './redux/store';
+import { Provider } from 'react-redux';
 
 function App() {
 
 
   return (
     <Fragment>
-      <ToggleContextProvider> 
+      <Provider store={myStore}> 
+      
     <div className={styled.page}>      
     <Router >
            <NavBar/> 
@@ -25,7 +27,8 @@ function App() {
   
    <footer> <Footer/></footer>
    </div>   
-   </ToggleContextProvider>
+   
+   </Provider>
    </Fragment>
   );
 }
