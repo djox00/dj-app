@@ -1,14 +1,10 @@
-import React, {  lazy, Suspense} from 'react';
+import React from 'react';
 import styled from './Home.module.scss';
 import ChatBar from '../Chat/chatBar';
 import MusicWindow from '../Music/MusicWindow';
 import {  Row, Col } from 'react-bootstrap';
-import { auth } from '../firebase-config';
 import Stars from '../Small-UI-components/Stars';
 import { motion } from 'framer-motion';
-import Loading from '../Small-UI-components/Loading'
-import { ref, getDatabase, refFromURL, serverTimestamp, onValue, query, onDisconnect, set } from 'firebase/database'
-import { database } from '../firebase-config';
 import { useSelector } from 'react-redux';
 import Sidebar from "../Music/Sidebar"
 
