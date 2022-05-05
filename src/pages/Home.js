@@ -1,29 +1,18 @@
-import React, { useContext, lazy, Suspense} from 'react';
+import React from 'react';
 import styled from './Home.module.scss';
 import ChatBar from '../Chat/chatBar';
 import MusicWindow from '../Music/MusicWindow';
 import {  Row, Col } from 'react-bootstrap';
-import { auth } from '../firebase-config';
 import Stars from '../Small-UI-components/Stars';
 import { motion } from 'framer-motion';
-import Loading from '../Small-UI-components/Loading'
-import ToggleContext from '../StateProviders/siderbar-toggle';
-import { ref, getDatabase, refFromURL, serverTimestamp, onValue, query } from 'firebase/database'
-import { database } from '../firebase-config';
-
-const Sidebar = lazy(()=> import("../Music/Sidebar"))
-
-
-
+import { useSelector } from 'react-redux';
+import Sidebar from "../Music/Sidebar"
 
 
 
 const Home = () => {
   
-  const starsContext = useContext(ToggleContext); 
-
-
-  
+  const StarsVisible = useSelector(state => state.StarsReducer); 
 
 
   return (
@@ -42,10 +31,11 @@ const Home = () => {
       
       >    
 
+
     
-     {auth.currentUser!=null ? <Suspense fallback={<Loading />}> <Sidebar   />   </Suspense> : '' }  
+       <Sidebar   /> 
     <div className={styled.page} >
-   {starsContext.stars ?  <Stars /> : ''} 
+   {StarsVisible ?  <Stars /> : ''} 
      
   
 

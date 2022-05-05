@@ -2,17 +2,18 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import Fade from '@mui/material/Fade';
-import { useState, useContext } from 'react';
+import { useState} from 'react';
 import SettingsIcon from '@mui/icons-material/Settings';
 import Switch from '@mui/material/Switch';
-import ToggleContext from '../StateProviders/siderbar-toggle';
 import styledClass from './StarsToggle.module.scss'
 import { alpha, styled } from '@mui/material/styles';
+import {useDispatch, useSelector} from 'react-redux'
+import { StarsToggleAction } from '../redux/actions/StarsToggleAction'; 
 
 const StarsToggle = () => {
 
-
-  const toggleContext = useContext(ToggleContext); 
+  const StarsVisible = useSelector(state => state.StarsReducer); 
+  const dispatch = useDispatch(); 
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -32,6 +33,7 @@ const StarsToggle = () => {
     },
     '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
       backgroundColor: "rgb(33, 37, 41)",
+      
     },
     
   }));
@@ -65,8 +67,8 @@ const StarsToggle = () => {
       > 
         
         <StarsSwitch 
-      checked={toggleContext.stars}
-      onChange={toggleContext.toggleStars}
+      checked={StarsVisible}
+      onChange={()=>dispatch(StarsToggleAction())}
       inputProps={{ 'aria-label': 'controlled' }}
       style={{color: "rgb(33, 37, 41)"}}
       
