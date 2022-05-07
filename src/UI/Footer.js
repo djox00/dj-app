@@ -7,7 +7,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import AudiotrackOutlinedIcon from '@mui/icons-material/AudiotrackOutlined';
 import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
-import StarsToggle from '../Small-UI-components/StarsToggle';
+import Settings from '../Small-UI-components/Settings';
 
 
 const Footer = (props) => {
@@ -68,7 +68,7 @@ useEffect(() => {
         className={styled.action}  
         icon={<AccountBoxRoundedIcon className={styled.icon} />}
       />
-        <StarsToggle />
+        <Settings />
     </BottomNavigation>
   
 

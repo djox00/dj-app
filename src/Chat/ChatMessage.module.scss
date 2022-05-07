@@ -34,14 +34,16 @@ ul, li {
     flex-direction: row-reverse;
     p {
       color: white;
-      background: rgba(43, 169, 201, 0.664);
+      /* background: rgba(43, 169, 201, 0.664); */
+      background: rgb(175, 65, 116);
       align-self: flex-end;
     }
   }
   
 
   .received p {
-    background: rgba(51, 209, 248, 0.864);
+    /* background: rgba(51, 209, 248, 0.864); */
+    background: rgb(211, 131, 191); 
     color: black;
   }
   
