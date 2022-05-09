@@ -29,24 +29,56 @@ ul, li {
 
 
   }
+  $sent_blue: rgba(43, 169, 201, 0.664);
+  $recieved_blue: rgba(51, 209, 248, 0.864);
+  
+  $sent_green: rgb(23, 161, 69);
+  $recieved_green: rgb(109, 201, 126); 
+  
+  $sent_pink: rgb(175, 65, 116);
+  $recieved_pink: rgb(211, 131, 191); 
 
-  .sent {
-    flex-direction: row-reverse;
+@mixin sent_flex ($color) {
+  flex-direction: row-reverse;
     p {
       color: white;
-      /* background: rgba(43, 169, 201, 0.664); */
-      background: rgb(175, 65, 116);
       align-self: flex-end;
+      background: $color;
     }
+}
+  
+  .sent_BLUE_THEME {
+    @include sent_flex($sent_blue);
   }
+  
+  .received_BLUE_THEME p {
+    color: black;
+    background: $recieved_blue;
+  }
+
+  .sent_GREEN_THEME {
+    @include sent_flex($sent_green);
+  }
+  
+  .received_GREEN_THEME p {
+    color: black;
+    background: $recieved_green;
+  }
+
+  .sent_PINK_THEME {
+    @include sent_flex($sent_pink);
+  }
+  
+  .received_PINK_THEME p {
+    color: black;
+    background: $recieved_pink;
+  }
+
+  // nastavi isto ovako
   
 
-  .received p {
-    /* background: rgba(51, 209, 248, 0.864); */
-    background: rgb(211, 131, 191); 
-    color: black;
-  }
-  
+
+
   .message > img {
     width: 40px;
     height: 40px;

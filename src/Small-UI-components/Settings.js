@@ -46,11 +46,11 @@ const Settings = () => {
         onClose={handleClose}
         TransitionComponent={Fade}
         PaperProps={{style:{
-          backgroundColor: "rgb(27, 131, 100)"
+          backgroundColor: "rgb(45, 49, 53)"
         }}}
       > 
         <ChatSetting />
-        <br /> <hr style={{color: "whitesmoke", marginTop: -25}} />
+        <br /> <hr style={{color: "white", marginTop: -25}} />
          <StarsSetting />
        
       </Menu>

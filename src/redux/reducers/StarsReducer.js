@@ -1,5 +1,5 @@
-const StarsReducer = (state = true, action) =>{
-
+const StarsReducer = (state =  true, action) =>{
+  
     switch(action.type){
     case 'STARS_TOGGLE': 
              return !state; 
