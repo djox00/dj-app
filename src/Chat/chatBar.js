@@ -1,8 +1,8 @@
-import React, {lazy, Suspense } from 'react';
+import React, {lazy, Suspense, useMemo } from 'react';
 import styled from './ChatBar.module.scss'
 import { useState, useEffect, useRef } from 'react';
 import { auth } from '../firebase-config';
-import { onAuthStateChanged } from 'firebase/auth';
+import {  onAuthStateChanged } from 'firebase/auth';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { getFirestore } from '@firebase/firestore';
@@ -11,14 +11,16 @@ import { useFirestoreQuery } from '../costumHooks/firebase-hooks';
 import { limitToLast } from 'firebase/firestore';
 import Loading from '../Small-UI-components/Loading';
 import InputField from './InputField';
+import { useSelector } from 'react-redux';
 
 const ChatMessage = lazy( () => import('./ChatMessage') ); 
+
 
 
 const ChatBar = () => {
 
 
-
+const messageTheme =  useSelector(state=>state.ChatColorReducer); 
 
  const db = getFirestore(); 
   const messageRef = collection(db,"messages"); 
@@ -74,7 +76,6 @@ useEffect(() => {
 
 
 
-
     return (
         <React.Fragment>
         <div className={styled.frame}>   
@@ -82,7 +83,7 @@ useEffect(() => {
           <div className={styled["message-window"]}>
           <Suspense fallback={<Loading>Loading...</Loading>}>
          <ul>  
-          {messages && messages.map(msg => <li key={msg.id}> <ChatMessage  message={msg} /></li> )}
+          {messages && messages.map(msg => <li key={msg.id}> <ChatMessage color={messageTheme}  message={msg} /></li> )}
           </ul>
           </Suspense>
             <span ref={autodown}> </span>

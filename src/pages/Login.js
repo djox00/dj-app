@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { createUserWithEmailAndPassword, onAuthStateChanged,signInWithEmailAndPassword, getRedirectResult, GoogleAuthProvider, signInWithRedirect, setPersistence, browserLocalPersistence, signInWithPopup, browserSessionPersistence } from 'firebase/auth'
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword, getRedirectResult, GoogleAuthProvider, setPersistence, browserLocalPersistence, signInWithPopup, browserSessionPersistence } from 'firebase/auth'
 import { auth } from '../firebase-config'
 import { useState} from 'react'
 import styled from './Login.module.scss';

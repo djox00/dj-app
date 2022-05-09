@@ -24,7 +24,7 @@ const Sidebar = () => {
 
   const dispatch = useDispatch(); 
   const SidebarVisible = useSelector(state=>state.SidebarReducer); 
-console.log(SidebarVisible)
+
 
   const [isMobile, setIsMobile] = useState(false)
   const handleResize = () => {

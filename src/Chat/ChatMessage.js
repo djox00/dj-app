@@ -1,7 +1,8 @@
-import React ,{ useState} from 'react'
+import React ,{ useState, useMemo} from 'react'
 import { auth } from '../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
 import styled from './ChatMessage.module.scss';
+
 const ChatMessage = (props) => {
 
     const [User, setUser] = useState(''); 
@@ -9,8 +10,9 @@ const ChatMessage = (props) => {
       setUser(currentUser); 
     })
   
-
+    const color = props.color; 
   
+    
     const { displayName, text, uid, photoURL, createdAt} = props.message;
     let messageClass = 'received'; 
     /* let date = new Date(createdAt?.seconds * 1000).toUTCString();  */// need to implement
@@ -20,12 +22,12 @@ const ChatMessage = (props) => {
     if(User!=null){   
      messageClass = (uid === User.uid) ? 'sent' : 'received';
     }
-  
+   
     return (<>
       {(displayName && messageClass!=='sent')? (
               <div className={styled.displayName} >{displayName}  </div>
             ) : null}
-      <div className={`${styled.message} ${styled[messageClass]} `}>
+      <div className={`${styled.message} ${styled[messageClass + '_' + color]} `}>
         
         <img src={photoURL || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} alt="error" />
        
@@ -39,4 +41,4 @@ const ChatMessage = (props) => {
 
 }
 
-export default ChatMessage
+export default React.memo(ChatMessage)

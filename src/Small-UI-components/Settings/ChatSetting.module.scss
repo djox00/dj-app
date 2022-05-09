@@ -1,0 +1,65 @@
+
+p{
+    margin-bottom: -50;
+    position: relative;
+    color: rgb(173, 173, 173);
+    text-align: center;
+    }
+    
+    .content{
+        width: 100%;
+        text-align: center;
+       height: auto;
+    }
+    .button-container {
+    
+    
+    #blue-theme{
+        background-color: rgb(27, 108, 155);
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        color: white;
+        border: none;
+        margin: 0 5px;
+        transform: scale(0.6);
+        transition: 0.3s;
+        &:hover{
+            transform: scale(0.7);
+    
+        }
+        
+    } 
+    #green-theme{
+        background-color: rgb(23, 161, 69);
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        color: white;
+        border: none;
+        margin: 0 5px;
+        transform: scale(0.6);
+        transition: 0.3s;
+        &:hover{
+            transform: scale(0.7);
+    
+        }
+    
+    }
+    #pink-theme{
+        background-color: rgb(175, 65, 116);
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        color: white;
+        border: none;
+        margin: 0 5px;
+        transform: scale(0.6);
+        transition: 0.3s;
+        &:hover{
+            transform: scale(0.7);
+    
+        }
+    }
+    
+    }
