@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment} from 'react'
 import styled from './Queue.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCompactDisc } from '@fortawesome/free-solid-svg-icons';

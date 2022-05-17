@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { alpha, styled } from '@mui/material/styles';
 import {useDispatch, useSelector} from 'react-redux'
-import { StarsToggleAction } from '../../redux/actions/StarsToggleAction'; 
+import { StarsToggleHidden, StarsToggleVisible } from '../../redux/actions/StarsToggleAction'; 
 import Switch from '@mui/material/Switch';
 import styledClass from './StarsSetting.module.scss'
 
@@ -30,7 +30,7 @@ const StarsSetting = () => {
     <div className={styledClass.content}>
  <StarsSwitch 
       checked={StarsVisible}
-      onChange={()=>dispatch(StarsToggleAction())}
+      onChange={()=>dispatch(StarsVisible? StarsToggleHidden() : StarsToggleVisible())}
       inputProps={{ 'aria-label': 'controlled' }}
       style={{color: "rgb(33, 37, 41)"}}
       

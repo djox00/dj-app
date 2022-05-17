@@ -159,14 +159,14 @@ const addToQueue = (displayName, photoURL, uid, videoid, videoTitle) =>{
         <animated.div style={sidebar} >
             <div className={styled.sidebar}>
 
-            <Confirm value="add" ConfirmVideo={ConfirmVideo}  setConfirmVideo={setConfirmVideo}> Do you want to add this video to the play queue? </Confirm>
+            <Confirm value="add" bgColor="rgba(58, 180, 109, 0.445)" ConfirmVideo={ConfirmVideo} setConfirmVideo={setConfirmVideo}> Do you want to add <span style={{color: "#d471e7", fontWeight: 700}}>{clickedVideo.videoTitle} </span> to the  queue? </Confirm>
               <div className={styled.close}><FontAwesomeIcon onClick={()=>dispatch(SidebarVisibleAction())} className={styled['close-button']} icon={faXmark} /></div>
               <div className={styled['search-field']}>   <input type="text" ref={UserInput} onKeyUp={onKeyPressHandler} /> <FontAwesomeIcon className={styled['search-icon']} icon={faSearch} onClick={onKeyPressHandler} /></div>
               <div className={styled['search-result']}>{videoList ? videoList : ''} </div>
             </div>
           </animated.div> 
           </div>
-          </animated.div> ,document.getElementById("sidebar"))}
+          </animated.div> , document.getElementById("sidebar"))}
         
     </React.Fragment>
   )

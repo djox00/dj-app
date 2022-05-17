@@ -3,7 +3,7 @@
     z-index: 100;
     min-width: 300px;
     max-width: 350px;
-    height: 250px;
+    min-height: 250px;
     background-color: rgb(49, 49, 49);
     border-radius: 10px;
     position: fixed;
@@ -14,33 +14,40 @@
     @media screen and (max-width: 480px) {
         &{ 
             top: 50vh;
-            
-            
-
         }
       }
-
-    button{
-        width: 100px;
-        height: 45px;
-        top: 70px;
+      p{
+        color: white; 
+        top: 20px;
         position: relative;
-        border-radius: 10px;
-        border: none;
-        background-color: rgba(58, 180, 109, 0.445);
-        color: white;
+        padding: 10px 30px 10px 30px;
+        text-align: center;
+        background-color: rgba(131, 131, 131, 0.445);
         font-family: 'Share Tech Mono', monospace;
-        
-        }
-        p{
-            color: white; 
-            top: 10%;
+    }
+
+    .center{
+        width: 100%;
+        text-align: center;
+        height: auto;
+        position: absolute;
+        bottom: 20px;
+
+        button{
+            width: 100px;
+            height: 45px;
             position: relative;
-            padding: 10px 30px 10px 30px;
-            text-align: center;
-            background-color: rgba(131, 131, 131, 0.445);
+            border-radius: 10px;
+            border: none;
+            color: white;
             font-family: 'Share Tech Mono', monospace;
-        }
+            
+            }
+        
+    }
+      
+    
+      
     }
 
 
@@ -60,7 +67,6 @@
     color: rgba(187, 35, 35, 0.808);
     svg {
         transform: scale(2);
-        transition: 0.3s;
         &:hover{
             cursor: pointer;
             transform: scale(2.1);
@@ -69,11 +75,5 @@
     
 }
 
-.center{
-    width: 100%;
-    text-align: center;
-    height: 80%;
-    
-}
-  
+
  

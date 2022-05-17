@@ -2,18 +2,20 @@ import React from 'react';
 import styled from './NavBar.module.scss';
 import { Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCompactDisc, faUserAstronaut, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import {faUserAstronaut, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { signOut,onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase-config';
 import { useState } from 'react';
 import AudiotrackOutlinedIcon from '@mui/icons-material/AudiotrackOutlined';
+import { useDispatch } from 'react-redux';
+import {MyProfileVisible} from '../redux/actions/MyProfileToggleAction'
 
 const NavBar = (props) => {
 const [User, setUser] = useState(''); 
 
   onAuthStateChanged(auth,(currentUser)=>{ setUser(currentUser); })
 
-
+const dispatch = useDispatch(); 
 const logout = async () =>{ 
   await signOut(auth); 
   window.sessionStorage.clear(); 
@@ -43,7 +45,7 @@ return('');
     <Nav style={{marginLeft: "20px"}} >
       <Nav.Link href="Rules">Rules</Nav.Link>
       <Nav.Link href="Info">Info</Nav.Link>
-      <Nav.Link href="MyProfile">My Profile</Nav.Link>
+     {auth.currentUser!=null?  <Nav.Link onClick={()=>dispatch(MyProfileVisible())}  style={{color: "#c04ad8"}} > <FontAwesomeIcon style={{color: "#c04ad8"}} icon={faUserAstronaut}  /> My Profile </Nav.Link> : '' }
     </Nav>
     
     <div className={styled.login}> <SignUp />    </div>
