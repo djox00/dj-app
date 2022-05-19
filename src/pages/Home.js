@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import styled from './Home.module.scss';
 import ChatBar from '../Chat/chatBar';
 import MusicWindow from '../Music/MusicWindow';
@@ -7,13 +7,14 @@ import Stars from '../Small-UI-components/Stars';
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import Sidebar from "../Music/Sidebar"
-
-
+import Loading from '../Small-UI-components/Loading';
+import { auth } from '../firebase-config';
+const MyProfile = lazy(()=> import("./MyProfile/MyProfile"))
 
 const Home = () => {
   
   const StarsVisible = useSelector(state => state.StarsReducer); 
-
+  const MyProfileVisible = useSelector(state => state.MyProfileReducer); 
 
   return (
     <React.Fragment>  
@@ -32,7 +33,7 @@ const Home = () => {
       >    
 
 
-    
+     {MyProfileVisible && auth.currentUser!=null ? <Suspense fallback={<Loading />} >    <MyProfile /> </Suspense> : '' } 
        <Sidebar   /> 
     <div className={styled.page} >
    {StarsVisible ?  <Stars /> : ''} 

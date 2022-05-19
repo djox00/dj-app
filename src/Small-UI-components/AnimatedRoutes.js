@@ -8,7 +8,7 @@ import {
   import  Home  from '../pages/Home';
   import Landing from '../pages/Landing';
   import Login from '../pages/Login';
-  import MyProfile from '../pages/MyProfile';
+  import MyProfile from '../pages/MyProfile/MyProfile';
   import { AnimatePresence } from 'framer-motion';
 
 

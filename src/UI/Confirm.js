@@ -28,9 +28,9 @@ const Confirm = (props) => {
     <Fragment>
  <animated.div style={popup}>   
      <div className={styled.frame}  > 
-     <div className={styled.close}><FontAwesomeIcon   icon={faXmark} onClick={closeBox} /></div>
+     <div className={styled.close}><FontAwesomeIcon icon={faXmark} onClick={closeBox} /></div>
      <p> {props.children}  </p>
-    <div className={styled.center}> <button onClick={ConfirmVideo} > <span> {props.value}  </span> </button>  </div> 
+    <div className={styled.center}> <button onClick={ConfirmVideo} style={{backgroundColor: props.bgColor}} > <span> {props.value}  </span> </button>  </div> 
      </div>    
      </animated.div>
     

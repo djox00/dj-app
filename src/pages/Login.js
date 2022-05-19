@@ -15,10 +15,6 @@ import { useFirestoreQuery } from '../costumHooks/firebase-hooks';
 
 
 
-
-
-
-
 const Login = () => {
   
   // display the user form by default 
@@ -53,7 +49,7 @@ const Login = () => {
       try {
         
         await createUserWithEmailAndPassword(auth, e, p);
-        updateProfile(auth.currentUser, { displayName: name });
+        updateProfile(auth.currentUser, { displayName: name, photoURL:  `https://avatars.dicebear.com/api/initials/${auth.currentUser.photoURL}.svg` });
         console.log(auth.currentUser);
         setErrorStatus(false);
         navigate("/Home");
@@ -85,6 +81,7 @@ const Login = () => {
     
 
     } catch (error) {
+      
       setErrorStatus(true);    // displays the error box 
       seterrorMessage(error);  // sets the message 
 

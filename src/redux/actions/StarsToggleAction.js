@@ -1,5 +1,11 @@
-export const StarsToggleAction = () =>{
+export const StarsToggleVisible = () =>{
     return {
-        type: 'STARS_TOGGLE'
+        type: 'STARS_VISIBLE'
     }
 }
+export const StarsToggleHidden = () =>{
+    return {
+        type: 'STARS_HIDDEN'
+    }
+}
+

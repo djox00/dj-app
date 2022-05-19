@@ -10,7 +10,7 @@ const ChatSetting = () => {
 const dispatch = useDispatch(); 
 const chatColor = useSelector(state=>state.ChatColorReducer); 
 
-console.log(chatColor)
+console.log(Boolean(window.sessionStorage.getItem("stars"))); 
 
   return (
       <Fragment> 
