@@ -36,15 +36,15 @@
       text-align: right;
       top: 10px;
       right: 10px;
-      color: rgba(187, 35, 35, 0.808);
+      color: rgba(190, 190, 190, 0.808);
     
   }
   .close-button{
-      transform: scale(2.2);
+      transform: scale(1.6);
       transition: 0.3s;
       &:hover{
         cursor: pointer;
-        transform: scale(2.35);
+        transform: scale(1.8);
     }
   }
  

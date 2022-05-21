@@ -2,14 +2,17 @@ import React, { Fragment, useEffect } from 'react'
 import styled from './MyProfile.module.scss'
 import { auth } from '../../firebase-config'; 
 import {useState} from 'react'; 
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, sendEmailVerification } from 'firebase/auth';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { MyProfileHidden } from '../../redux/actions/MyProfileToggleAction';
 import { motion } from 'framer-motion';
 import PictureInput from './PictureInput';
-import { updateProfile } from 'firebase/auth';
+import ChangeInput from './ChangeInput';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import Error from '../../UI/Error';
+
 
 const MyProfile = () => {
 
@@ -19,11 +22,15 @@ const MyProfile = () => {
 
     }) 
 
-    const [PictureChanged, setPictureChanged] = useState(false); 
+ 
+    const [error, seterror] = useState({message: '', status: false}); 
+
+
 
 const dispatch = useDispatch(); 
 
 const MyProfileVisible = useSelector(state=> state.MyProfileReducer); 
+
 
 
 if(MyProfileVisible){
@@ -34,15 +41,16 @@ if(!MyProfileVisible){
 }
 
 
+  setTimeout(()=>{
+    onAuthStateChanged(auth,(currentUser)=>{ 
+      setUser(currentUser); 
+    }) 
 
-useEffect(() => {
+   }, 1000 )
   
-  onAuthStateChanged(auth,(currentUser)=>{ 
-    setUser(currentUser); 
-  }) 
-  
-}, [PictureChanged])
-
+const LoginWithGoogle = auth.currentUser?.providerData[0].providerId === 'google.com'; 
+ 
+console.log(auth.currentUser)
 
   return (
     <Fragment> 
@@ -59,25 +67,26 @@ useEffect(() => {
           }}
           exit={{opacity: 0,  transition: {duration: 0.7} }}
     >
+    
     <div className={styled.panel}> 
+   {error.status ? <Error>  {error.message.toString()} </Error> : '' } 
+    <div style={{width: "100%", marginTop: 15}} >  
     <div className={styled.close}><FontAwesomeIcon onClick={()=>dispatch(MyProfileHidden())} className={styled['close-button']} icon={faXmark} /></div>
-     
+    </div>
   
      <div className={styled.container}>
      <img src={User?.photoURL} alt="no img" />
      <div className={styled.middle}>
    
-    <PictureInput setPictureChanged={setPictureChanged} />
+    <PictureInput seterror={seterror} />
   </div>  
 </div>
 
-<div className={styled.inputs}>    
-<input  type="text" placeholder="Display Name" value={User?.displayName}  />
-<button value="Apply change"/>
-<input type="email" placeholder="email" value={User?.email} disabled   />
-<input  type="number" placeholder="Phone number" value={User?.phoneNumber}  />
-
-<button value="Apply change"/>
+<div className={styled.inputs}>   
+<p>Name: {User?.displayName} <ChangeInput seterror={seterror} InputForm="name" inputText="text"   />  </p> <br /> <br />
+{!LoginWithGoogle ? <Fragment>   <p>Email: {User?.email} <ChangeInput seterror={seterror} InputForm="email" inputText="email" /></p> <br /> <br />
+<p>Password  <ChangeInput seterror={seterror} InputForm="password" inputText="password"  /> </p><br /> <br />
+</Fragment> : '' }
 
 </div>  
      

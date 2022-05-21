@@ -64,12 +64,13 @@
     text-align: right;
     top: 10px;
     right: 15px;
-    color: rgba(187, 35, 35, 0.808);
+    color: rgba(190, 190, 190, 0.808);
     svg {
-        transform: scale(2);
+        transform: scale(1.7);
+    
         &:hover{
             cursor: pointer;
-            transform: scale(2.1);
+            transform: scale(1.8);
         }
     }
     

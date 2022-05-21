@@ -16,7 +16,7 @@
     width: 50%;
     left: 25%;
     top: 10vh;
-    height: 80vh;
+    height: 50vh;
     position: absolute;
     border-radius: 5px;
     z-index: 1;
@@ -27,12 +27,13 @@
 
 
   .close{
-    position: relative;
-    width: 100%;
-    text-align: right;
-    top: 10px;
-    right: 10px;
-    color: rgba(187, 35, 35, 0.808);
+    position: absolute;
+    right: 15px;
+    transform: scale(1.5);
+    color: rgba(190, 190, 190, 0.808);
+    &:hover{
+        cursor: pointer;
+    }
   
 }
  
@@ -42,8 +43,7 @@
           top: 25px;
         position: relative;
         width: auto;
-        
-        
+
         &:hover .image {
             opacity: 0.3;
           }
@@ -60,8 +60,8 @@
           transition: .5s ease;
           backface-visibility: hidden;
           opacity: 1;
-          max-width: 97px;
-          max-height: 97px;
+          width: 96px;
+          height: 96px;
            
        
 
@@ -100,23 +100,32 @@
 }
 
 
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 .inputs{
-width: 80%;
-left: 10%;
+max-width: 400px;
 position: relative;
-margin-top: 60px;
-text-align: left;
-
-
-input{
-    width: 70%;
-
+margin: 70px auto;
+text-align: center;
+height: 80%;
+p{
+    color: white;
+    display: inline;
+    background-color: rgba(83, 83, 83, 0.568);
+    padding: 10px;
+    font-family: 'Share Tech Mono', monospace;
+    
+    
+   
 }
-button{
-    width: 30%;
-    height: 30px;
+svg{
+    color: white;
+    display: inline;
+    margin-left: 15px;
+    &:hover{
+        cursor: pointer; 
+    }
+    
 }
-
 
 
 
