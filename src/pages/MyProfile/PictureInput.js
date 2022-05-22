@@ -8,7 +8,7 @@ import { auth } from '../../firebase-config';
 import { updateProfile } from 'firebase/auth';
 
 
-const PictureInput = ({setPictureChanged}) => {
+const PictureInput = ({seterror}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
@@ -29,17 +29,18 @@ const PictureInput = ({setPictureChanged}) => {
       }
 
 
-const SubmitChange = (e) =>{
+const SubmitChange = async (e) =>{
     e.preventDefault(); 
-    handleClose(); 
-    
+    try{
+      if( !isImage(URL.current.value)) throw new Error("Image URL not valid!")
+      await  updateProfile(auth.currentUser, { photoURL: URL.current.value });
+      seterror(()=>{return {message: '', status: false}}); 
+    }catch(error){
+      
+      seterror(()=>{return {message: error.message, status: true}}); 
+    }
    
-console.log(isImage(URL.current.value))
-
- if( isImage(URL.current.value)){
-    updateProfile(auth.currentUser, { photoURL: URL.current.value });
-    setPictureChanged(()=> Math.random()); 
-}
+handleClose(); 
 
 }
 
@@ -61,12 +62,12 @@ console.log(isImage(URL.current.value))
           }}
           
         >
-          <Typography sx={{ p: 2, bgcolor: 'rgb(44,44,44)' }} >
+          <div style={{ padding: 10, backgroundColor: 'rgb(44,44,44)', textAlign: "center", color: "white"}} >
               New Photo URL    <br/>
               <form onSubmit={SubmitChange} > 
               <input type="text" ref={URL} /> <FontAwesomeIcon icon={faCheck} style={{transform: "scale(1.50)", marginLeft: 10}} onClick={SubmitChange} />
               </form>
-              </Typography>
+              </div>
               
         </Popover>
       </div>

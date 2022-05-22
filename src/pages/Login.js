@@ -5,7 +5,7 @@ import { useState} from 'react'
 import styled from './Login.module.scss';
 import LoginForm from '../UI/LoginForm';
 import RegisterForm from '../UI/RegisterForm';
-import Error from '../UI/Error';
+import ErrorComponent from '../UI/Error';
 import { useNavigate } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
 import { motion } from 'framer-motion';
@@ -42,28 +42,24 @@ const Login = () => {
   // if status is true the errorMessage will be displayed  
   const [ErrorStatus, setErrorStatus] = useState(false);
   const [errorMessage, seterrorMessage] = useState('');
+
+  const [error, seterror] = useState({message: '', status: false}); 
   // executes when the user hits register  
   const register = async (name, e, p, c) => {
 
-    if (p === c) {
+    
       try {
-        
+        if (p !== c) throw new Error("Passwords do NOT match"); 
         await createUserWithEmailAndPassword(auth, e, p);
         updateProfile(auth.currentUser, { displayName: name, photoURL:  `https://avatars.dicebear.com/api/initials/${auth.currentUser.photoURL}.svg` });
         console.log(auth.currentUser);
-        setErrorStatus(false);
+        seterror(()=>{return {message: '', status: false}}); 
         navigate("/Home");
-
+       
       } catch (error) {
-        setErrorStatus(true);    // displays the error box 
-        seterrorMessage(error);  // sets the message 
+        seterror(()=>{return {message: error.message, status: true}}); 
       }
-    } else {
-      setErrorStatus(true);    // displays the error box 
-      seterrorMessage('Password does not match!');  // sets the message 
-
-
-    }
+    
 
 
   }
@@ -76,14 +72,13 @@ const Login = () => {
     try {
       await  setPersistence(auth,browserSessionPersistence); 
       const user = await signInWithEmailAndPassword(auth, e, p);
-      setErrorStatus(false);
+      seterror(()=>{return {message: '', status: false}}); 
       setAdmin(); 
     
 
     } catch (error) {
       
-      setErrorStatus(true);    // displays the error box 
-      seterrorMessage(error);  // sets the message 
+      seterror(()=>{return {message: error.message, status: true}}); 
 
     }
   }
@@ -96,14 +91,12 @@ const Login = () => {
       await  setPersistence(auth,browserSessionPersistence); 
       const result = await signInWithPopup (auth, provider); 
        GoogleAuthProvider.credentialFromResult(result);
-        setErrorStatus(false); 
+       seterror(()=>{return {message: '', status: false}}); 
          setAdmin(); 
      
 
     } catch (error) {
-      setErrorStatus(true);    // displays the error box 
-      seterrorMessage(error.message);  // sets the message 
-      GoogleAuthProvider.credentialFromError(error);
+      seterror(()=>{return {message: error.message, status: true}}); 
     }
         
   }
@@ -125,7 +118,7 @@ const Login = () => {
      
      
       >
-        {ErrorStatus ? <Error>{errorMessage}</Error> : ''}
+        {error.status ? <ErrorComponent>{error.message}</ErrorComponent> : ''}
         <div className={styled.authentication}>
           {displayLogin ?
             <LoginForm  flogin={login} fLoginWithGoogle={LoginWithGoogle} displayLogin={setdisplayLogin} /> :
