@@ -100,18 +100,20 @@ switch (InputForm) {
     <Popover
       id={id}
       open={open}
+      sx={{height: "auto"}}
       anchorEl={anchorEl}
       onClose={handleClose}
       anchorOrigin={{
         vertical: 'bottom',
         horizontal: 'left',
+        
       }}
       
     >
       <div style={{ padding: 10, backgroundColor: 'rgb(44,44,44)', textAlign: "center", color: "white"}} >
-      <form onSubmit={SubmitChange} > 
-              {InputForm === 'password'? <Fragment> <input style={{marginLeft: 0}} type={inputText} ref={ConfirmRef} /><br />  </Fragment> : ''}
-              <input type={inputText} ref={ThisRef} /> <FontAwesomeIcon icon={faCheck} style={{transform: "scale(1.50)", marginLeft: 10}} onClick={SubmitChange} />
+      <form onSubmit={SubmitChange} style={{position: "relative"}} > 
+              {InputForm === 'password'? <Fragment> <input style={{left: 0, position: "absolute"}} type={inputText} ref={ConfirmRef} /><br />  </Fragment> : ''}
+              <input type={inputText} ref={ThisRef} style={{ marginTop: "10px"}} /> <FontAwesomeIcon icon={faCheck} style={{transform: "scale(1.50)", marginLeft: 10}} onClick={SubmitChange} />
               </form>
           </div>
           

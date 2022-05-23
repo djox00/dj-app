@@ -26,6 +26,26 @@
   background-color: rgba(32, 32, 32, 0.836);
 
 
+  @media screen and (max-width: 1000px) {
+    & {
+        width: 80%;
+        left: 10%;
+        
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    & {
+        width: 100%;
+        left: 0;
+        height: 100%;
+        top: 0;
+    }
+  }
+
+
+
+
   .close{
     position: absolute;
     right: 15px;
@@ -109,9 +129,10 @@ text-align: center;
 height: 80%;
 p{
     color: white;
-    display: inline;
     background-color: rgba(83, 83, 83, 0.568);
     padding: 10px;
+    width: 90%;
+    left: 5%;
     font-family: 'Share Tech Mono', monospace;
     
     
