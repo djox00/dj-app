@@ -14,6 +14,14 @@
     min-height: 5vh;
     font-family: 'Share Tech Mono', monospace;
   z-index: 61;
+
+
+  @media screen and (max-width: 991px) {
+    & {
+        z-index: 51;
+    }
+  }
+
 }
 .login{
     position: absolute;

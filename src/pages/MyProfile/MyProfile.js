@@ -83,9 +83,9 @@ console.log(auth.currentUser)
 </div>
 
 <div className={styled.inputs}>   
-<p>Name: {User?.displayName} <ChangeInput seterror={seterror} InputForm="name" inputText="text"   />  </p> <br /> <br />
-{!LoginWithGoogle ? <Fragment>   <p>Email: {User?.email} <ChangeInput seterror={seterror} InputForm="email" inputText="email" /></p> <br /> <br />
-<p>Password  <ChangeInput seterror={seterror} InputForm="password" inputText="password"  /> </p><br /> <br />
+<p>Name: {User?.displayName} <ChangeInput seterror={seterror} InputForm="name" inputText="text"   />  </p> 
+{!LoginWithGoogle ? <Fragment>   <p>Email: {User?.email} <ChangeInput seterror={seterror} InputForm="email" inputText="email" /></p>
+<p>Password  <ChangeInput seterror={seterror} InputForm="password" inputText="password"  /> </p>
 <p>Email Verified {auth.currentUser.emailVerified ? <FontAwesomeIcon icon={faCheck} style={{color: "green"}} /> : <FontAwesomeIcon icon={faXmark} style={{color: "red"}}/> } </p>
 </Fragment> : '' }
 
