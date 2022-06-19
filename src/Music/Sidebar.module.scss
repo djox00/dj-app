@@ -87,8 +87,13 @@ margin-left: 20px;
       margin-top: 50px;
       min-height: 100px;
       overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        display: none; 
+      }
+    
       
   }
-
+ 
  
   

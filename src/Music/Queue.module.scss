@@ -1,6 +1,6 @@
 .queue-container{
     font-family: 'Share Tech Mono', monospace;
-
+   
     .add-track-button{
         display: inline-block;
 
@@ -38,6 +38,10 @@
     text-align: center;
     position: relative;
     overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        display: none; /* for Chrome, Safari, and Opera */
+    }
 
     p {
         color: rgb(255, 255, 255); 
