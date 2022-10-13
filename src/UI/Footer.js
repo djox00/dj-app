@@ -8,12 +8,14 @@ import AudiotrackOutlinedIcon from '@mui/icons-material/AudiotrackOutlined';
 import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
 import Settings from '../Small-UI-components/Settings';
-
+import { auth } from '../firebase-config';
+import { useDispatch } from 'react-redux';
+import { MyProfileVisible } from '../redux/actions/MyProfileToggleAction';
 
 const Footer = (props) => {
 
 
-  
+  const dispatch = useDispatch(); 
    
   const [value, setValue] = useState('/Home');
 
@@ -21,7 +23,7 @@ useEffect(() => {
   setValue(window.location.pathname);
 }, [])
 
-
+console.log(auth.currentUser!=null)
 
   return (
      <Fragment>   
@@ -63,8 +65,8 @@ useEffect(() => {
       />
       <BottomNavigationAction
         label="My profile"
-        value="/MyProfile"
-        href="/MyProfile"
+        value="MyProfile"
+        onClick={ ()=> dispatch(MyProfileVisible())}
         className={styled.action}  
         icon={<AccountBoxRoundedIcon className={styled.icon} />}
       />
