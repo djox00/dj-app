@@ -1,3 +1,25 @@
+@import '../Styles/modules'; 
+
+.page{ 
+  height: 90vh; 
+  width: 100%;
+@include background(); 
+
+
+.card{
+  background-color: white;
+  width: 80%;
+  left:10%;  
+  top: 5%; 
+  position: relative;
+
+}
+
+
+
+}
+
+
 ::-webkit-scrollbar {
     width: 13px;
   

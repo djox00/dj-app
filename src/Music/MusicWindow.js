@@ -92,7 +92,7 @@ updateDoc(doc(db,"queue",queue[0]?.id),{likes : arrayUnion(User.uid)   })
         <div className={styled.volume}> <VolumeSlider setMusicVolume={setMusicVolume} /> {admin && queue[0] && User!=null ? <FontAwesomeIcon onClick={()=>{ deleteDoc(doc(db, "queue", queue[0].id))}}  className={styled.foward} icon={faForwardStep} /> : '' }    </div>   
 
        <span style={{color: "white"}}>    {queue[0]?.likes?.length} </span> 
-      {queue[0] ? (!like ? <FavoriteBorderIcon onClick={LikeHandler} style={{color: "white"}}/>   : <FavoriteIcon style={{color: "white"}} /> ) : ''}
+      {queue[0]  ? (!like ? <FavoriteBorderIcon  onClick={LikeHandler} style={{color: "white"}}/>   : <FavoriteIcon  style={{color: "white"}} /> ) : ''}
                                      
       {queue[0] ?  <p> <span style={{ color: "rgb(36, 180, 108)" }}> Now playing:    </span>    <img src={queue[0]?.photoURL || `https://avatars.dicebear.com/api/initials/${queue[0]?.displayName}.svg` || 'https://w7.pngwing.com/pngs/867/134/png-transparent-giant-panda-dog-cat-avatar-fox-animal-tag-mammal-animals-carnivoran-thumbnail.png'} alt={'error'} /> <span style={{ color: "rgb(223, 79, 245)", fontWeight: "bold" }}>{queue[0]?.displayName}</span>  | {queue[0]?.videotitle} </p> : ''}
     

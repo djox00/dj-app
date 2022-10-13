@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import styled from './ChatSetting.module.scss'
 import { useDispatch, useSelector  } from 'react-redux';
-import {SetChatColorBlue, SetChatColorPink, SetChatColorGreen} from '../../redux/actions/ChatCholorHandler'
+import { SetChatColorBlue, SetChatColorPink, SetChatColorGreen } from '../../redux/actions/ChatCholorHandler'
 
 const ChatSetting = () => {
 

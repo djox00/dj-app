@@ -10,6 +10,7 @@ import {
   import Login from '../pages/Login';
   import MyProfile from '../pages/MyProfile/MyProfile';
   import { AnimatePresence } from 'framer-motion';
+import Info from '../pages/Info';
 
 
 
@@ -26,6 +27,7 @@ const AnimatedRoutes = () => {
     <Route path="/Login" element={ <Login/> } />
     <Route path="/MyProfile" element={ <MyProfile />} />
     <Route path="/Rules" element={ <Rules/> } />
+    <Route path="/Info" element={ <Info/> } />
     <Route exact path="/" element={ <Landing />} />
   </Routes>
   </AnimatePresence>
